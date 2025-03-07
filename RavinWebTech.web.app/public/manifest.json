@@ -1,0 +1,21 @@
+{
+    "name": "Ravindra Pandit Ahire - Portfolio",
+    "short_name": "RPA Portfolio",
+    "description": "Cyber Security Intern Portfolio showcasing expertise in cybersecurity, AI, and software development.",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#2a2a72",
+    "theme_color": "#2a2a72",
+    "icons": [
+        {
+            "src": "/img/icons/icon-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/img/icons/icon-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+} 
