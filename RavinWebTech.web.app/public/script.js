@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     // YouTube videos data
     const videos = [
+        {id: "S_tT3WLLcEs", title: "Compare Android with Different Opearating System"},
         { id: "LkhbS26NzRg", title: "AES-256 Encryption technique using OpenSSL with automation" },
         { id: "O33OpaYARQo", title: "Free Host a Website on Firebase for FREE in 2025" },
         { id: "5FY0ifeSeuk", title: "Install & Activate Office 2021 for FREE" },
@@ -21,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: "YFLnbdX5Kg0", title: "Make USB pendrive Hacking Machine" },
         { id: "nIVIbsznYXA", title: "Ventoy Multiboot PenDrive" },
         { id: "yDQJnQDTXQk", title: "Android Payload Demonstration" }
+
     ];
 
     // Certificates data with categories
@@ -129,17 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Create video elements
     videos.forEach(video => {
-        const videoItem = document.createElement('div');
-        videoItem.className = 'video-item';
-        videoItem.innerHTML = `
-            <iframe
-                src="https://www.youtube.com/embed/${video.id}"
-                title="${video.title}"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen
-            ></iframe>
-            <h4 class="video-title">${video.title}</h4>
-        `;
+        const videoItem = createVideoItem(video);
         carouselTrack.appendChild(videoItem);
     });
 
@@ -363,4 +355,32 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('scroll', checkTitleVisibility);
     // Initial check for titles in viewport
     checkTitleVisibility();
+
+    // Update the createVideoItem function
+    function createVideoItem(video) {
+        const videoItem = document.createElement('div');
+        videoItem.className = 'video-item';
+        videoItem.innerHTML = `
+            <iframe
+                src="https://www.youtube.com/embed/${video.id}"
+                title="${video.title}"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+            ></iframe>
+            <h3 class="video-title">${video.title}</h3>
+        `;
+
+        // Add click event to display resources when video is selected
+        videoItem.addEventListener('click', () => {
+            // Update active video styling
+            document.querySelectorAll('.video-item').forEach(item => item.classList.remove('active'));
+            videoItem.classList.add('active');
+            
+            // Display resources for the selected video
+            window.videoResources.displayResources(video.id);
+        });
+
+        return videoItem;
+    }
 }); 
