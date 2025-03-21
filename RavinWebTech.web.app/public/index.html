@@ -46,25 +46,22 @@
 
     <!-- Navigation -->
     <nav class="navbar">
-        <a href="index.html" class="nav-brand">
-            <div class="logo-container">
-                <img src="img/profiles/profile_1.jpg" alt="Ravindra Logo" class="nav-logo">
-                <div class="logo-text">
-                    <span class="logo-name">Ravindra</span>
-                    <span class="logo-title">Cyber Security</span>
-                </div>
+        <div class="logo-container">
+            <img src="img/profiles/profile_1.jpg" alt="Ravindra Logo" class="nav-logo">
+            <div class="logo-text">
+                <span class="logo-name">Ravindra</span>
+                <span class="logo-title">Cyber Security</span>
             </div>
-        </a>
-        
+        </div>
         <ul class="nav-links">
-            <li><a href="index.html" class="nav-link"><i class="fas fa-home"></i><span>Home</span></a></li>
-            <li><a href="index.html#about" class="nav-link"><i class="fas fa-user"></i><span>About</span></a></li>
-            <li><a href="index.html#skills" class="nav-link"><i class="fas fa-code"></i><span>Skills</span></a></li>
-            <li><a href="index.html#work" class="nav-link"><i class="fas fa-briefcase"></i><span>Work</span></a></li>
-            <li><a href="index.html#youtube" class="nav-link"><i class="fab fa-youtube"></i><span>YouTube</span></a></li>
-            <li><a href="index.html#resume" class="nav-link"><i class="fas fa-file-alt"></i><span>Resume</span></a></li>
+            <li><a href="#home" class="nav-link"><i class="fas fa-home"></i><span>Home</span></a></li>
+            <li><a href="#about" class="nav-link"><i class="fas fa-user"></i><span>About</span></a></li>
+            <li><a href="#skills" class="nav-link"><i class="fas fa-code"></i><span>Skills</span></a></li>
+            <li><a href="#work" class="nav-link"><i class="fas fa-briefcase"></i><span>Work</span></a></li>
+            <li><a href="#youtube" class="nav-link"><i class="fab fa-youtube"></i><span>YouTube</span></a></li>
+            <li><a href="#resume" class="nav-link"><i class="fas fa-file-alt"></i><span>Resume</span></a></li>
             <li><a href="certifications.html" class="nav-link"><i class="fas fa-certificate"></i><span>Certifications</span></a></li>
-            <li><a href="index.html#contact" class="nav-link"><i class="fas fa-envelope"></i><span>Contact</span></a></li>
+            <li><a href="#contact" class="nav-link"><i class="fas fa-envelope"></i><span>Contact</span></a></li>
         </ul>
         <div class="hamburger">
             <span></span>
@@ -73,9 +70,19 @@
         </div>
     </nav>
 
-    <!-- Home Section -->
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <ul class="mobile-links">
+            <li><a href="#home" class="mobile-link"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="#about" class="mobile-link"><i class="fas fa-user"></i> About</a></li>
+            <li><a href="#skills" class="mobile-link"><i class="fas fa-code"></i> Skills</a></li>
+            <li><a href="#youtube" class="mobile-link"><i class="fab fa-youtube"></i> YouTube</a></li>
+            <li><a href="#contact" class="mobile-link"><i class="fas fa-envelope"></i> Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- Hero Section -->
     <section id="home" class="hero">
-        <div class="hero-texture"></div>
         <div class="hero-content">
             <h1>Ravindra Pandit Ahire</h1>
             <h2>Cyber Security Intern</h2>
@@ -86,72 +93,50 @@
 
     <!-- About Section -->
     <section id="about" class="about">
-        <h2 class="section-title">
-            <span>Who I Am</span>
-            About Me
-        </h2>
-        <p class="section-subtitle">Passionate about cybersecurity and committed to making the digital world safer through innovation and expertise</p>
         <div class="about-content">
             <div class="about-text">
+                <h2>About Me</h2>
                 <p>I am a Computer Engineering graduate with a passion for Cyber Security, Artificial Intelligence, and Data Science. My journey in technology has equipped me with a diverse skill set and a problem-solving mindset.</p>
                 <p>I specialize in various development tools and platforms, including Git, GitHub, Android Studio, and multiple IDEs. My experience with ChatGPT and other AI tools has enhanced my ability to innovate and create efficient solutions.</p>
+            </div>
+            <div class="about-image">
+                <img src="img/profiles/profile_1.jpg" alt="Profile" class="about-img">
             </div>
         </div>
     </section>
 
     <!-- Skills Section -->
     <section id="skills" class="skills">
-        <h2 class="section-title">
-            <span>What I Know</span>
-            My Skills
-        </h2>
-        <p class="section-subtitle">A diverse skill set combining cybersecurity expertise with modern development tools and technologies</p>
-        <div class="skills-grid">
-            <div class="skill-category">
+        <div class="skills-content">
+            <div class="skill-card">
+                <i class="fas fa-code"></i>
                 <h3>Programming Languages</h3>
-                <ul>
-                    <li>Java (Core, AWT)</li>
-                    <li>C++</li>
-                    <li>Python</li>
-                </ul>
+                <p>Java (Core, AWT), C++, Python</p>
             </div>
-            <div class="skill-category">
+            <div class="skill-card">
+                <i class="fas fa-server"></i>
                 <h3>Web Development</h3>
-                <ul>
-                    <li>HTML</li>
-                </ul>
+                <p>HTML, CSS, JavaScript</p>
             </div>
-            <div class="skill-category">
+            <div class="skill-card">
+                <i class="fas fa-paint-brush"></i>
                 <h3>Version Control</h3>
-                <ul>
-                    <li>Git</li>
-                    <li>GitHub</li>
-                </ul>
+                <p>Git, GitHub</p>
             </div>
-            <div class="skill-category">
+            <div class="skill-card">
+                <i class="fas fa-paint-brush"></i>
                 <h3>IDEs</h3>
-                <ul>
-                    <li>VS Code</li>
-                    <li>PyCharm</li>
-                    <li>IntelliJ IDEA</li>
-                    <li>Eclipse</li>
-                </ul>
+                <p>VS Code, PyCharm, IntelliJ IDEA, Eclipse</p>
             </div>
-            <div class="skill-category">
+            <div class="skill-card">
+                <i class="fas fa-paint-brush"></i>
                 <h3>Cloud Computing (AWS)</h3>
-                <ul>
-                    <li>EC2</li>
-                    <li>S3</li>
-                    <li>IAM</li>
-                </ul>
+                <p>EC2, S3, IAM</p>
             </div>
-            <div class="skill-category">
+            <div class="skill-card">
+                <i class="fas fa-paint-brush"></i>
                 <h3>AI & Data Science</h3>
-                <ul>
-                    <li>Foundational Concepts</li>
-                    <li>ChatGPT</li>
-                    <li>Data Analysis</li>
-                </ul>
+                <p>Foundational Concepts, ChatGPT, Data Analysis</p>
             </div>
         </div>
     </section>
@@ -170,69 +155,77 @@
 
     <!-- YouTube Section -->
     <section id="youtube" class="youtube">
-        <h2 class="section-title">
-            <span>CyberTechX_ravin</span>
-            YouTube Channel
-        </h2>
-        <p class="section-subtitle">Join me on my journey as I share insights, tutorials, and the latest trends in cybersecurity</p>
         <div class="youtube-content">
-            <h3>CyberTechX_ravin</h3>
-            <p>Subscribe to my channel for cyber security insights and tech tutorials!</p>
+            <h2>My YouTube Channel</h2>
+            <p>Check out my latest tutorials and projects</p>
             
             <div class="video-carousel">
-                <button class="carousel-btn prev-btn">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                
                 <div class="carousel-container">
                     <div class="carousel-track">
-                        <!-- Video items will be added here dynamically -->
+                        <div class="video-item">
+                            <iframe src="https://www.youtube.com/embed/VIDEO_ID_1" allowfullscreen></iframe>
+                            <div class="video-title">Video Title 1</div>
+                        </div>
+                        <div class="video-item">
+                            <iframe src="https://www.youtube.com/embed/VIDEO_ID_2" allowfullscreen></iframe>
+                            <div class="video-title">Video Title 2</div>
+                        </div>
+                        <div class="video-item">
+                            <iframe src="https://www.youtube.com/embed/VIDEO_ID_3" allowfullscreen></iframe>
+                            <div class="video-title">Video Title 3</div>
+                        </div>
+                        <div class="video-item">
+                            <iframe src="https://www.youtube.com/embed/VIDEO_ID_4" allowfullscreen></iframe>
+                            <div class="video-title">Video Title 4</div>
+                        </div>
                     </div>
                 </div>
-
-                <button class="carousel-btn next-btn">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
+                <button class="carousel-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+                <button class="carousel-btn next-btn"><i class="fas fa-chevron-right"></i></button>
             </div>
 
-            <!-- Add the resources container here -->
-            <div id="video-resources" class="video-resources">
-                <!-- Resources will be loaded dynamically -->
-            </div>
-
-            <a href="https://youtube.com/@CyberTechX_ravin" target="_blank" class="youtube-button">
-                <i class="fab fa-youtube"></i> Visit Channel
+            <a href="https://www.youtube.com/channel/YOUR_CHANNEL_ID" class="youtube-button" target="_blank">
+                <i class="fab fa-youtube"></i>
+                Visit My Channel
             </a>
         </div>
     </section>
 
     <!-- Contact Section -->
     <section id="contact" class="contact">
-        <h2 class="section-title">
-            <span>Get In Touch</span>
-            Contact Me
-        </h2>
-        <p class="section-subtitle">Let's discuss how we can work together to create secure and innovative solutions</p>
-        <div class="contact-grid">
+        <div class="contact-content">
             <div class="contact-info">
-                <div class="contact-item">
-                    <i class="fas fa-envelope"></i>
-                    <p>RavindraAhire897@gmail.com</p>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-phone"></i>
-                    <p>+91 9322026193 / +91 9284209164</p>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <p>Pune, Maharashtra - 411006</p>
+                <h2>Get in Touch</h2>
+                <p>Let's discuss how we can work together to create secure and innovative solutions</p>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>RavindraAhire897@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+91 9322026193 / +91 9284209164</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Pune, Maharashtra - 411006</span>
+                    </div>
                 </div>
             </div>
             <div class="contact-form">
                 <form id="contact-form">
-                    <input type="text" placeholder="Your Name" required>
-                    <input type="email" placeholder="Your Email" required>
-                    <textarea placeholder="Your Message" required></textarea>
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="subject" placeholder="Subject" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" placeholder="Your Message" required></textarea>
+                    </div>
                     <button type="submit" class="submit-button">Send Message</button>
                 </form>
             </div>
@@ -253,60 +246,22 @@
         </div>
     </section>
 
-    <!-- Certifications Section -->
-    <section id="certifications" class="certifications">
-        <h2 class="section-title">
-            <span>My Achievements</span>
-            Certifications
-        </h2>
-        <p class="section-subtitle">Professional certifications and achievements that demonstrate my expertise and commitment to continuous learning</p>
-        <div class="cert-filters">
-            <button class="filter-btn active" data-filter="all">All</button>
-            <button class="filter-btn" data-filter="cybersecurity">Cyber Security</button>
-            <button class="filter-btn" data-filter="programming">Programming</button>
-            <button class="filter-btn" data-filter="tools">Tools & Platforms</button>
-        </div>
-        <div class="cert-grid">
-            <!-- Certificates will be added dynamically via JavaScript -->
-        </div>
-    </section>
-
-    <!-- Certificate Modal -->
-    <div class="cert-modal">
-        <div class="modal-overlay"></div>
-        <div class="modal-container">
-            <button class="modal-close">&times;</button>
-            <div class="modal-content">
-                <img src="" alt="" class="modal-image">
-                <div class="modal-info">
-                    <h3 class="modal-title"></h3>
-                    <p class="modal-description"></p>
-                    <a href="#" class="download-btn" download>
-                        <i class="fas fa-download"></i> Download Certificate
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- Footer -->
     <footer class="footer">
-        <div class="footer-content">
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/ravindra-ahire-a43902296" target="_blank" data-tooltip="Connect on LinkedIn"><i class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/RavindraPanditAhire" target="_blank" data-tooltip="Main GitHub Profile - Professional Projects" data-repo="main"><i class="fab fa-github"></i></a>
-                <a href="https://github.com/HackRore" target="_blank" data-tooltip="Security Research & Hacking Projects" data-repo="hack"><i class="fab fa-github"></i></a>
-                <a href="https://www.instagram.com/_ravi_ahire_/" target="_blank" data-tooltip="Follow on Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="https://youtube.com/@CyberTechX_ravin" target="_blank" data-tooltip="Subscribe to CyberTechX"><i class="fab fa-youtube"></i></a>
-            </div>
-            <p>&copy; 2024 Ravindra Pandit Ahire. All rights reserved.</p>
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/ravindra-ahire-a43902296" target="_blank" data-tooltip="Connect on LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/RavindraPanditAhire" target="_blank" data-tooltip="Main GitHub Profile - Professional Projects" data-repo="main"><i class="fab fa-github"></i></a>
+            <a href="https://github.com/HackRore" target="_blank" data-tooltip="Security Research & Hacking Projects" data-repo="hack"><i class="fab fa-github"></i></a>
+            <a href="https://www.instagram.com/_ravi_ahire_/" target="_blank" data-tooltip="Follow on Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://youtube.com/@CyberTechX_ravin" target="_blank" data-tooltip="Subscribe to CyberTechX"><i class="fab fa-youtube"></i></a>
         </div>
+        <p>&copy; 2024 Ravindra Pandit Ahire. All rights reserved.</p>
     </footer>
 
     <script src="script.js"></script>
     <script src="resources.js"></script>
 
-    <!-- firebase scrpt integration ---------------------------------->
+    <!-- firebase script integration ---------------------------------->
     
     <script type="module">
         // Import the functions you need from the SDKs you need
@@ -334,4 +289,4 @@
 
      <!-- --------------------------------------------------------- -->
 </body>
-</html> 
+</html>

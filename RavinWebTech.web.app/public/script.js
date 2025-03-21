@@ -170,29 +170,130 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Mobile Menu Toggle
     const hamburger = document.querySelector('.hamburger');
+    const mobileMenu = document.querySelector('.mobile-menu');
     const navLinks = document.querySelector('.nav-links');
-    let isMenuOpen = false;
 
+    // Toggle mobile menu
     hamburger.addEventListener('click', () => {
+        mobileMenu.classList.toggle('active');
         hamburger.classList.toggle('active');
-        navLinks.classList.toggle('active');
+        document.body.classList.toggle('no-scroll');
+    });
+
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('.mobile-link').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            hamburger.classList.remove('active');
+            document.body.classList.remove('no-scroll');
+        });
     });
 
     // Close mobile menu when clicking outside
     document.addEventListener('click', (e) => {
-        if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+        if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
+            mobileMenu.classList.remove('active');
             hamburger.classList.remove('active');
-            navLinks.classList.remove('active');
+            document.body.classList.remove('no-scroll');
         }
     });
 
-    // Reset mobile menu on window resize
-    window.addEventListener('resize', () => {
-        if (window.innerWidth > 768) {
-            hamburger.classList.remove('active');
-            navLinks.classList.remove('active');
+    // Prevent scrolling when mobile menu is open
+    document.addEventListener('touchmove', (e) => {
+        if (mobileMenu.classList.contains('active')) {
+            e.preventDefault();
         }
     });
+
+    // Update navbar on scroll
+    const navbar = document.querySelector('.navbar');
+    let lastScroll = 0;
+
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
+
+        if (currentScroll <= 0) {
+            navbar.classList.remove('scrolled');
+            return;
+        }
+
+        if (currentScroll > lastScroll && !navbar.classList.contains('scrolled')) {
+            // Scrolling down
+            navbar.classList.add('scrolled');
+        } else if (currentScroll < lastScroll && navbar.classList.contains('scrolled')) {
+            // Scrolling up
+            navbar.classList.remove('scrolled');
+        }
+
+        lastScroll = currentScroll;
+    });
+
+    // YouTube Carousel
+    const prevButton = document.querySelector('.prev-btn');
+    const nextButton = document.querySelector('.next-btn');
+    const videoItems = document.querySelectorAll('.video-item');
+    const slidesPerPage = 3;
+    let currentSlide = 0;
+
+    // Calculate the width of all slides
+    const slideWidth = videoItems[0].clientWidth;
+
+    // Set initial transform
+    carouselTrack.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+
+    // Update slide width when window is resized
+    window.addEventListener('resize', () => {
+        const newSlideWidth = videoItems[0].clientWidth;
+        carouselTrack.style.transform = `translateX(-${currentSlide * newSlideWidth}px)`;
+    });
+
+    // Previous button click handler
+    prevButton.addEventListener('click', () => {
+        if (currentSlide > 0) {
+            currentSlide--;
+            const newSlideWidth = videoItems[0].clientWidth;
+            carouselTrack.style.transform = `translateX(-${currentSlide * newSlideWidth}px)`;
+        }
+    });
+
+    // Next button click handler
+    nextButton.addEventListener('click', () => {
+        const maxSlides = Math.ceil(videoItems.length / slidesPerPage) - 1;
+        if (currentSlide < maxSlides) {
+            currentSlide++;
+            const newSlideWidth = videoItems[0].clientWidth;
+            carouselTrack.style.transform = `translateX(-${currentSlide * newSlideWidth}px)`;
+        }
+    });
+
+    // Auto-scroll functionality
+    let autoScrollInterval;
+    let isPaused = false;
+
+    function startAutoScroll() {
+        autoScrollInterval = setInterval(() => {
+            if (!isPaused) {
+                nextButton.click();
+            }
+        }, 5000); // Change slide every 5 seconds
+    }
+
+    function pauseAutoScroll() {
+        isPaused = true;
+        clearInterval(autoScrollInterval);
+    }
+
+    function resumeAutoScroll() {
+        isPaused = false;
+        startAutoScroll();
+    }
+
+    // Start auto-scroll when page loads
+    startAutoScroll();
+
+    // Pause auto-scroll when hovering over carousel
+    carouselTrack.addEventListener('mouseenter', pauseAutoScroll);
+    carouselTrack.addEventListener('mouseleave', resumeAutoScroll);
 
     // Active link handling
     const sections = document.querySelectorAll('section[id]');
@@ -236,7 +337,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 // Close mobile menu after clicking
                 hamburger.classList.remove('active');
-                navLinks.classList.remove('active');
+                mobileMenu.classList.remove('active');
             }
         });
     });
@@ -248,14 +349,52 @@ document.addEventListener('DOMContentLoaded', () => {
     setActiveLink();
 
     // Contact Form Handling
-    const contactForm = document.getElementById('contact-form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('Thank you for your message! I will get back to you soon.');
+    const contactForm = document.getElementById('contactForm');
+
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        // Get form data
+        const formData = new FormData(contactForm);
+        const data = {
+            name: formData.get('name'),
+            email: formData.get('email'),
+            subject: formData.get('subject'),
+            message: formData.get('message')
+        };
+
+        // Send data to Firebase
+        fetch('https://your-firebase-url/messages', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(data => {
+            alert('Message sent successfully!');
             contactForm.reset();
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Error sending message. Please try again later.');
         });
-    }
+    });
+
+    // Smooth Scroll for Navigation Links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
 
     // Add animation to elements when they come into view
     const observerOptions = {
