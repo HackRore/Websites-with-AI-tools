@@ -125,22 +125,99 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     ];
 
-    // Initialize video carousel
+    // Create video items from the videos array
+    function createVideoItems() {
+        const carouselTrack = document.getElementById('carousel-track');
+        carouselTrack.innerHTML = ''; // Clear existing items
+
+        videos.forEach(video => {
+            const videoItem = document.createElement('div');
+            videoItem.className = 'video-item';
+            videoItem.innerHTML = `
+                <iframe
+                    src="https://www.youtube.com/embed/${video.id}"
+                    title="${video.title}"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                ></iframe>
+                <div class="video-title">${video.title}</div>
+            `;
+
+            // Add click event to display resources when video is selected
+            videoItem.addEventListener('click', () => {
+                // Update active video styling
+                document.querySelectorAll('.video-item').forEach(item => item.classList.remove('active'));
+                videoItem.classList.add('active');
+                
+                // Display resources for the selected video
+                window.videoResources.displayResources(video.id);
+            });
+
+            carouselTrack.appendChild(videoItem);
+        });
+    }
+
+    // Initialize video items when DOM is loaded
+    createVideoItems();
+
+    // Initialize carousel
     const carouselTrack = document.querySelector('.carousel-track');
     let currentIndex = 0;
-
-    // Create video elements
-    videos.forEach(video => {
-        const videoItem = createVideoItem(video);
-        carouselTrack.appendChild(videoItem);
-    });
 
     // Carousel Navigation
     const prevBtn = document.querySelector('.prev-btn');
     const nextBtn = document.querySelector('.next-btn');
 
+    // Video Carousel
+    let isDragging = false;
+    let startX;
+    let scrollLeft;
+
+    const carousel = document.querySelector('.carousel');
+
+    // Add touch support
+    carousel.addEventListener('touchstart', (e) => {
+        isDragging = true;
+        startX = e.touches[0].clientX - carousel.offsetLeft;
+        scrollLeft = carousel.scrollLeft;
+    });
+
+    carousel.addEventListener('touchmove', (e) => {
+        if (!isDragging) return;
+        e.preventDefault();
+        const x = e.touches[0].clientX - carousel.offsetLeft;
+        const walk = (x - startX) * 2; // Adjust the sensitivity
+        carousel.scrollLeft = scrollLeft - walk;
+    });
+
+    carousel.addEventListener('touchend', () => {
+        isDragging = false;
+    });
+
+    // Add mouse drag support
+    carousel.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        startX = e.clientX - carousel.offsetLeft;
+        scrollLeft = carousel.scrollLeft;
+    });
+
+    carousel.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        e.preventDefault();
+        const x = e.clientX - carousel.offsetLeft;
+        const walk = (x - startX) * 2; // Adjust the sensitivity
+        carousel.scrollLeft = scrollLeft - walk;
+    });
+
+    carousel.addEventListener('mouseup', () => {
+        isDragging = false;
+    });
+
+    // Update carousel function with smooth transitions
     function updateCarousel() {
         const slideWidth = document.querySelector('.video-item').offsetWidth;
+        carouselTrack.style.transition = 'transform 0.5s ease';
         carouselTrack.style.transform = `translateX(-${currentIndex * (slideWidth + 16)}px)`; // 16px is the gap
         
         // Update button states
@@ -161,6 +238,36 @@ document.addEventListener('DOMContentLoaded', () => {
             updateCarousel();
         }
     });
+
+    // Auto-scroll function with improved timing
+    let autoScrollInterval;
+    function startAutoScroll() {
+        autoScrollInterval = setInterval(() => {
+            if (currentIndex < videos.length - 1) {
+                currentIndex++;
+                updateCarousel();
+            } else {
+                currentIndex = 0;
+                updateCarousel();
+            }
+        }, 5000); // 5 seconds interval
+    }
+
+    function pauseAutoScroll() {
+        clearInterval(autoScrollInterval);
+    }
+
+    function resumeAutoScroll() {
+        clearInterval(autoScrollInterval);
+        startAutoScroll();
+    }
+
+    // Start auto-scroll when page loads
+    startAutoScroll();
+
+    // Pause auto-scroll when hovering over carousel
+    carousel.addEventListener('mouseenter', pauseAutoScroll);
+    carousel.addEventListener('mouseleave', resumeAutoScroll);
 
     // Initial carousel setup
     updateCarousel();
@@ -227,73 +334,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         lastScroll = currentScroll;
     });
-
-    // YouTube Carousel
-    const prevButton = document.querySelector('.prev-btn');
-    const nextButton = document.querySelector('.next-btn');
-    const videoItems = document.querySelectorAll('.video-item');
-    const slidesPerPage = 3;
-    let currentSlide = 0;
-
-    // Calculate the width of all slides
-    const slideWidth = videoItems[0].clientWidth;
-
-    // Set initial transform
-    carouselTrack.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
-
-    // Update slide width when window is resized
-    window.addEventListener('resize', () => {
-        const newSlideWidth = videoItems[0].clientWidth;
-        carouselTrack.style.transform = `translateX(-${currentSlide * newSlideWidth}px)`;
-    });
-
-    // Previous button click handler
-    prevButton.addEventListener('click', () => {
-        if (currentSlide > 0) {
-            currentSlide--;
-            const newSlideWidth = videoItems[0].clientWidth;
-            carouselTrack.style.transform = `translateX(-${currentSlide * newSlideWidth}px)`;
-        }
-    });
-
-    // Next button click handler
-    nextButton.addEventListener('click', () => {
-        const maxSlides = Math.ceil(videoItems.length / slidesPerPage) - 1;
-        if (currentSlide < maxSlides) {
-            currentSlide++;
-            const newSlideWidth = videoItems[0].clientWidth;
-            carouselTrack.style.transform = `translateX(-${currentSlide * newSlideWidth}px)`;
-        }
-    });
-
-    // Auto-scroll functionality
-    let autoScrollInterval;
-    let isPaused = false;
-
-    function startAutoScroll() {
-        autoScrollInterval = setInterval(() => {
-            if (!isPaused) {
-                nextButton.click();
-            }
-        }, 5000); // Change slide every 5 seconds
-    }
-
-    function pauseAutoScroll() {
-        isPaused = true;
-        clearInterval(autoScrollInterval);
-    }
-
-    function resumeAutoScroll() {
-        isPaused = false;
-        startAutoScroll();
-    }
-
-    // Start auto-scroll when page loads
-    startAutoScroll();
-
-    // Pause auto-scroll when hovering over carousel
-    carouselTrack.addEventListener('mouseenter', pauseAutoScroll);
-    carouselTrack.addEventListener('mouseleave', resumeAutoScroll);
 
     // Active link handling
     const sections = document.querySelectorAll('section[id]');
@@ -494,32 +534,4 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('scroll', checkTitleVisibility);
     // Initial check for titles in viewport
     checkTitleVisibility();
-
-    // Update the createVideoItem function
-    function createVideoItem(video) {
-        const videoItem = document.createElement('div');
-        videoItem.className = 'video-item';
-        videoItem.innerHTML = `
-            <iframe
-                src="https://www.youtube.com/embed/${video.id}"
-                title="${video.title}"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen
-            ></iframe>
-            <h3 class="video-title">${video.title}</h3>
-        `;
-
-        // Add click event to display resources when video is selected
-        videoItem.addEventListener('click', () => {
-            // Update active video styling
-            document.querySelectorAll('.video-item').forEach(item => item.classList.remove('active'));
-            videoItem.classList.add('active');
-            
-            // Display resources for the selected video
-            window.videoResources.displayResources(video.id);
-        });
-
-        return videoItem;
-    }
 }); 
