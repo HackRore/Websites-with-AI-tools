@@ -161,106 +161,25 @@
     <!-- YouTube Section -->
     <section id="youtube" class="youtube">
         <div class="youtube-content">
-            <h2>My YouTube Channel</h2>
-            <p>Check out my latest tutorials and projects</p>
-            
-            <div class="video-carousel">
-                <div class="carousel-container">
-                    <div class="carousel-track">
-                        <div class="video-item">
-                            <iframe src="https://www.youtube.com/embed/S_tT3WLLcEs" allowfullscreen></iframe>
-                            <div class="video-title">Compare Android with Different Operating Systems</div>
-                        </div>
-                        <div class="video-item">
-                            <iframe src="https://www.youtube.com/embed/LkhbS26NzRg" allowfullscreen></iframe>
-                            <div class="video-title">AES-256 Encryption Technique Using OpenSSL with Automation</div>
-                        </div>
-                        <div class="video-item">
-                            <iframe src="https://www.youtube.com/embed/O33OpaYARQo" allowfullscreen></iframe>
-                            <div class="video-title">Free Host a Website on Firebase in 2025</div>
-                        </div>
-                        <div class="video-item">
-                            <iframe src="https://www.youtube.com/embed/5FY0ifeSeuk" allowfullscreen></iframe>
-                            <div class="video-title">Install & Activate Office 2021 for Free</div>
-                        </div>
-                        <div class="video-item">
-                            <iframe src="https://www.youtube.com/embed/tEVqxz_tvCc" allowfullscreen></iframe>
-                            <div class="video-title">Kali Linux Installation Guide</div>
-                        </div>
-                        <div class="video-item">
-                            <iframe src="https://www.youtube.com/embed/Fq-K8veA3lA" allowfullscreen></iframe>
-                            <div class="video-title">How to Download & Install Jupyter Notebook</div>
-                        </div>
-                        <div class="video-item">
-                            <iframe src="https://www.youtube.com/embed/5YdWcMRMQag" allowfullscreen></iframe>
-                            <div class="video-title">How to Download & Install Jupyter Notebook (Alternative Method)</div>
-                        </div>
-                        <div class="video-item">
-                            <iframe src="https://www.youtube.com/embed/-xvuJMuncsA" allowfullscreen></iframe>
-                            <div class="video-title">Install & Run Ubuntu on VMware Workstation</div>
-                        </div>
-                        <div class="video-item">
-                            <iframe src="https://www.youtube.com/embed/t1uUmfUSh-4" allowfullscreen></iframe>
-                            <div class="video-title">How to Set JDK Path in Windows</div>
-                        </div>
-                        <div class="video-item">
-                            <iframe src="https://www.youtube.com/embed/Jdc6GEMAdiA" allowfullscreen></iframe>
-                            <div class="video-title">MinGW & C++ Setup in 2024 with VS Code</div>
-                        </div>
-                        <div class="video-item">
-                            <iframe src="https://www.youtube.com/embed/2Xi0kwbqitA" allowfullscreen></iframe>
-                            <div class="video-title">Kali Linux Commands Part 1</div>
-                        </div>
-                        <div class="video-item">
-                            <iframe src="https://www.youtube.com/embed/ywoR-nNwWsI" allowfullscreen></iframe>
-                            <div class="video-title">Kali Linux Setup in Oracle VirtualBox</div>
-                        </div>
-                        <div class="video-item">
-                            <iframe src="https://www.youtube.com/embed/Nz85OUgH5zc" allowfullscreen></iframe>
-                            <div class="video-title">Android Studio Setup Guide</div>
-                        </div>
-                        <div class="video-item">
-                            <iframe src="https://www.youtube.com/embed/PR_0nkFlJ8w" allowfullscreen></iframe>
-                            <div class="video-title">How to Host Website on GitHub Pages</div>
-                        </div>
-                        <div class="video-item">
-                            <iframe src="https://www.youtube.com/embed/PIrmOKDw-eU" allowfullscreen></iframe>
-                            <div class="video-title">Kali 2024.4 Latest Updates Tutorial</div>
-                        </div>
-                        <div class="video-item">
-                            <iframe src="https://www.youtube.com/embed/0dENGYgkbaQ" allowfullscreen></iframe>
-                            <div class="video-title">PhoneInfoga Tool Tutorial - Phone Number Information Gathering</div>
-                        </div>
-                        <div class="video-item">
-                            <iframe src="https://www.youtube.com/embed/8HelHaAkAmc" allowfullscreen></iframe>
-                            <div class="video-title">CamPhish Tool Tutorial - Social Engineering Tool</div>
-                        </div>
-                        <div class="video-item">
-                            <iframe src="https://www.youtube.com/embed/AdJEkzBPV1Q" allowfullscreen></iframe>
-                            <div class="video-title">Kali ISO Boot in VirtualBox Tutorial</div>
-                        </div>
-                        <div class="video-item">
-                            <iframe src="https://www.youtube.com/embed/YFLnbdX5Kg0" allowfullscreen></iframe>
-                            <div class="video-title">Make USB Pendrive Hacking Machine - Bootable Kali Linux</div>
-                        </div>
-                        <div class="video-item">
-                            <iframe src="https://www.youtube.com/embed/nIVIbsznYXA" allowfullscreen></iframe>
-                            <div class="video-title">Ventoy Multiboot PenDrive - Create Bootable USB with Multiple OS</div>
-                        </div>
-                        <div class="video-item">
-                            <iframe src="https://www.youtube.com/embed/yDQJnQDTXQk" allowfullscreen></iframe>
-                            <div class="video-title">Android Payload Demonstration - Security Testing</div>
-                        </div>
-                    </div>
-                </div>
-                <button class="carousel-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
-                <button class="carousel-btn next-btn"><i class="fas fa-chevron-right"></i></button>
+            <div class="section-header">
+                <h2>My YouTube Channel</h2>
+                <p>Check out my latest tutorials and projects</p>
             </div>
 
-            <a href="https://youtube.com/@cybertechx_ravin?si=QFyTKEv4OMbrqLlh" class="youtube-button" target="_blank">
-                <i class="fab fa-youtube"></i>
-                Visit My Channel
-            </a>
+            <div class="video-list">
+                <div class="video-grid" id="video-grid"></div>
+            </div>
+
+            <div class="channel-actions">
+                <a href="https://youtube.com/@cybertechx_ravin?si=QFyTKEv4OMbrqLlh" class="channel-btn" target="_blank">
+                    <i class="fab fa-youtube"></i>
+                    Visit Channel
+                </a>
+                <button class="subscribe-btn">
+                    <i class="fas fa-bell"></i>
+                    Subscribe
+                </button>
+            </div>
         </div>
     </section>
 

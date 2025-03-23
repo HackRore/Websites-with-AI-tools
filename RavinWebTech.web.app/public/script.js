@@ -1,29 +1,112 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // YouTube videos data
-    const videos = [
-        {id: "S_tT3WLLcEs", title: "Compare Android with Different Opearating System"},
-        { id: "LkhbS26NzRg", title: "AES-256 Encryption technique using OpenSSL with automation" },
-        { id: "O33OpaYARQo", title: "Free Host a Website on Firebase for FREE in 2025" },
-        { id: "5FY0ifeSeuk", title: "Install & Activate Office 2021 for FREE" },
-        { id: "tEVqxz_tvCc", title: "Kali Linux Installation Guide" },
-        { id: "Fq-K8veA3lA", title: "How to Download & Install Jupyter Notebook" },
-        { id: "5YdWcMRMQag", title: "How to Download & Install Jupyter Notebook" },
-        { id: "-xvuJMuncsA", title: "Install & Run Ubuntu on VMware Workstation" },
-        { id: "t1uUmfUSh-4", title: "How to Set JDK Path in Windows" },
-        { id: "Jdc6GEMAdiA", title: "MinGW & C++ Setup in 2024 with VS Code" },
-        { id: "2Xi0kwbqitA", title: "Kali linux cammands part 1" },
-        { id: "ywoR-nNwWsI", title: "Kali Linux Setup in Oracle VB" },
-        { id: "Nz85OUgH5zc", title: "Android Studio Setup" },
-        { id: "PR_0nkFlJ8w", title: "Host Website on GitHub Page" },
-        { id: "PIrmOKDw-eU", title: "Kali 2024.4 latest updetes tutorial" },
-        { id: "0dENGYgkbaQ", title: "PhoneInfoga Tool Tutorial" },
-        { id: "8HelHaAkAmc", title: "CamPhish Tool Tutorial" },
-        { id: "AdJEkzBPV1Q", title: "kali ISO boot in VirtualBox" },
-        { id: "YFLnbdX5Kg0", title: "Make USB pendrive Hacking Machine" },
-        { id: "nIVIbsznYXA", title: "Ventoy Multiboot PenDrive" },
-        { id: "yDQJnQDTXQk", title: "Android Payload Demonstration" }
+    // YouTube Data Structure
+    const youtubeData = {
+        channel: {
+            name: "CyberTechX",
+            url: "https://youtube.com/@cybertechx_ravin?si=QFyTKEv4OMbrqLlh",
+            subscribeUrl: "https://youtube.com/@cybertechx_ravin?si=QFyTKEv4OMbrqLlh"
+        },
+        videos: [
+            { id: "o2V7W9Ye3qo", title: "🧑‍💻 MSBTE Practical 10: Create a Login Window using TextView, EditText, and Button| CyberTechX|MSBTE", date: "2025-02-15" },
+            { id: "-Uw9dBHJ37A", title: "🛠️Practical No. 9 | Button,ImageButton & ToggleButton Implementation 🚀 | MSBTE Playlist | CyberTechX", date: "2025-02-20" },
+            { id: "G-MEdtWIF_w", title: "🛠️ Practical 8: Implementing AutoCompleteTextView in Android Studio using Java and XML 🚀", date: "2025-02-25" },
+            { id: "zeBNnhSL-r8", title: "🚀 MSBTE MAD Practical 7: 📱 EditText & TextView Implementation | Android Studio Tutorial", date: "2025-03-01" },
+            { id: "liH9v_aVtNw", title: "Frame Layout, Table Layout, and Relative Layout in Android Studio | Practical No. 6 Tutorial", date: "2025-03-05" },
+            { id: "yrI-LYMQAKE", title: "Linear & Absolute Layout Implementation | MSBTE Mobile App Development Practical 5 | Android Studio", date: "2025-03-10" },
+            { id: "8YkYJRdYZTM", title: "🔥 MSBTE Diploma Practical No. 4 | Create a Hello World App in Android Studio (Java & XML)", date: "2025-03-12" },
+            { id: "FBOd7xsbCUc", title: "Hackers' Secret Windows Commands REVEALED! | Become a Windows Pro with These Tricks", date: "2025-03-15" },
+            { id: "S8rC6iNGvvI", title: "🔥 MSBTE Practical 2: Full Android Setup | JDK + SDK Installation Step-by-Step 🚀", date: "2025-03-17" },
+            { id: "S_tT3WLLcEs", title: "📱 Android vs Other OS: Why Android? 🤔 | Mobile App Development Series (MSBTE Diploma) 🎓", date: "2025-03-18" },
+            { id: "LkhbS26NzRg", title: "How Hackers Secure Files: OpenSSL AES-256 + Bash Scripting", date: "2025-03-19" },
+            { id: "yDQJnQDTXQk", title: "How do Hackers Spy on Android🚨 REAL Android Hacking Demo | ⚡ Cybersecurity Awareness 🔥📱", date: "2025-03-20" },
+            { id: "nIVIbsznYXA", title: "Ventoy Multibootable🚀 Run Windows, Linux & More from ONE USB Drive! 🔥(Boot Multiple OS with Ventoy)🦹", date: "2025-03-21" },
+            { id: "0dENGYgkbaQ", title: "📱 🔍 PhoneInfoga EXPOSED! | Get Info from Only Mobile Number 📲 [Live Demo]🛡️", date: "2025-03-22" },
+            { id: "8HelHaAkAmc", title: "🔥 CamFish Ethical Hacking Tool – LIVE Camera Access via Phishing! 🎯 (For Educational Use Only)...🤫🤫🤩", date: "2025-03-16" },
+            { id: "AdJEkzBPV1Q", title: "🖥️ Installing Kali Linux in Virtual Machine ⚡ Using ISO Image File 📂 | Complete Setup Guide ✅", date: "2025-03-14" },
+            { id: "PIrmOKDw-eU", title: "🎯⚡ \"STOP Everything! You NEED to See Kali Linux 2024.4's New Features!\" 🚀🚀🔥", date: "2025-03-13" },
+            { id: "YFLnbdX5Kg0", title: "🖥️💀 Turn Your USB into a Portable Hacking Machine! (Kali Linux Live + Persistence) 🚀", date: "2025-03-11" },
+            { id: "PR_0nkFlJ8w", title: "Free Free 💻 Host Your Static Website for FREE on GitHub Pages 🌐 | Step-by-Step Guide + Error Fixes ✅", date: "2025-03-09" },
+            { id: "Nz85OUgH5zc", title: "🤩🤫 Android Studio Setup 🤖✨🤩🚀 No Cost! Build Your Own App! 🔥 | Live Demo 📱 on Mobile 🤖✨", date: "2025-03-07" },
+            { id: "Jdc6GEMAdiA", title: "Part-2✅ \"Kali Linux Commands for Beginners 🔥 Learn File Management, Networking & Hacking Tools 🚀\"", date: "2025-03-04" },
+            { id: "ywoR-nNwWsI", title: "🔥 \"Kali Linux Setup in Oracle VirtualBox for FREE! 🚀 Easiest Guide for Beginners 🎯\"", date: "2025-03-02" },
+            { id: "2Xi0kwbqitA", title: "Part:1 🚀 Master Linux Basics in Minutes! 🔥 File Navigation & Management Commands | CyberTechX", date: "2025-02-28" },
+            { id: "O33OpaYARQo", title: "Free Free Free🔥 Host a Website on Firebase for FREE in 2025 | Step-by-Step Guide with Live Demo", date: "2025-02-26" },
+            { id: "-xvuJMuncsA", title: "🚀 Install & Run Ubuntu on VMware Workstation | Boot from ISO + Fun Terminal Commands! 🖥️🐧", date: "2025-02-24" },
+            { id: "tEVqxz_tvCc", title: "🔥 Kali Linux Installation on VMware Workstation | Step-by-Step Guide for Beginners", date: "2025-02-22" },
+            { id: "t1uUmfUSh-4", title: "How to Set JDK Path in Windows | Step-by-Step Guide for Beginners", date: "2025-02-21" }
+        ]
+    };
 
-    ];
+    // Helper Functions
+    function formatDate(dateString) {
+        const date = new Date(dateString);
+        return date.toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+    }
+
+    function createVideoElement(video) {
+        // Generate thumbnail URL
+        const thumbnail = `https://img.youtube.com/vi/${video.id}/mqdefault.jpg`;
+        
+        const videoElement = document.createElement('div');
+        videoElement.className = 'video-item';
+        
+        videoElement.innerHTML = `
+            <div class="video-wrapper">
+                <iframe 
+                    src="https://www.youtube.com/embed/${video.id}?rel=0&showinfo=0&autoplay=0" 
+                    allowfullscreen
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    loading="lazy"
+                    title="${video.title}"
+                    width="100%"
+                    height="100%"
+                    style="opacity: 1; visibility: visible; display: block; min-height: 200px;"
+                ></iframe>
+            </div>
+            <div class="video-info">
+                <div class="video-title">${video.title}</div>
+                <div class="video-date">${formatDate(video.date)}</div>
+            </div>
+        `;
+        
+        return videoElement;
+    }
+
+    // Initialize YouTube section
+    const videoGrid = document.getElementById('video-grid');
+    
+    if (!videoGrid) {
+        console.error('Video grid container not found');
+        return;
+    }
+
+    // Create video items
+    youtubeData.videos.forEach(video => {
+        const videoElement = createVideoElement(video);
+        videoGrid.appendChild(videoElement);
+    });
+
+    // Force iframe visibility after initialization
+    setTimeout(() => {
+        const iframes = document.querySelectorAll('.video-wrapper iframe');
+        iframes.forEach(iframe => {
+            iframe.style.opacity = '1';
+            iframe.style.visibility = 'visible';
+            iframe.style.display = 'block';
+        });
+    }, 1000);
+
+    // Add click handler for the subscribe button
+    const subscribeBtn = document.querySelector('.subscribe-btn');
+    if (subscribeBtn) {
+        subscribeBtn.addEventListener('click', () => {
+            window.location.href = youtubeData.channel.subscribeUrl;
+        });
+    }
 
     // Certificates data with categories
     const certificates = [
@@ -124,156 +207,6 @@ document.addEventListener('DOMContentLoaded', () => {
             category: "programming"
         }
     ];
-
-    // Create video items from the videos array
-    function createVideoItems() {
-        const carouselTrack = document.getElementById('carousel-track');
-        carouselTrack.innerHTML = ''; // Clear existing items
-
-        videos.forEach(video => {
-            const videoItem = document.createElement('div');
-            videoItem.className = 'video-item';
-            videoItem.innerHTML = `
-                <iframe
-                    src="https://www.youtube.com/embed/${video.id}"
-                    title="${video.title}"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen
-                ></iframe>
-                <div class="video-title">${video.title}</div>
-            `;
-
-            // Add click event to display resources when video is selected
-            videoItem.addEventListener('click', () => {
-                // Update active video styling
-                document.querySelectorAll('.video-item').forEach(item => item.classList.remove('active'));
-                videoItem.classList.add('active');
-                
-                // Display resources for the selected video
-                window.videoResources.displayResources(video.id);
-            });
-
-            carouselTrack.appendChild(videoItem);
-        });
-    }
-
-    // Initialize video items when DOM is loaded
-    createVideoItems();
-
-    // Initialize carousel
-    const carouselTrack = document.querySelector('.carousel-track');
-    let currentIndex = 0;
-
-    // Carousel Navigation
-    const prevBtn = document.querySelector('.prev-btn');
-    const nextBtn = document.querySelector('.next-btn');
-
-    // Video Carousel
-    let isDragging = false;
-    let startX;
-    let scrollLeft;
-
-    const carousel = document.querySelector('.carousel');
-
-    // Add touch support
-    carousel.addEventListener('touchstart', (e) => {
-        isDragging = true;
-        startX = e.touches[0].clientX - carousel.offsetLeft;
-        scrollLeft = carousel.scrollLeft;
-    });
-
-    carousel.addEventListener('touchmove', (e) => {
-        if (!isDragging) return;
-        e.preventDefault();
-        const x = e.touches[0].clientX - carousel.offsetLeft;
-        const walk = (x - startX) * 2; // Adjust the sensitivity
-        carousel.scrollLeft = scrollLeft - walk;
-    });
-
-    carousel.addEventListener('touchend', () => {
-        isDragging = false;
-    });
-
-    // Add mouse drag support
-    carousel.addEventListener('mousedown', (e) => {
-        isDragging = true;
-        startX = e.clientX - carousel.offsetLeft;
-        scrollLeft = carousel.scrollLeft;
-    });
-
-    carousel.addEventListener('mousemove', (e) => {
-        if (!isDragging) return;
-        e.preventDefault();
-        const x = e.clientX - carousel.offsetLeft;
-        const walk = (x - startX) * 2; // Adjust the sensitivity
-        carousel.scrollLeft = scrollLeft - walk;
-    });
-
-    carousel.addEventListener('mouseup', () => {
-        isDragging = false;
-    });
-
-    // Update carousel function with smooth transitions
-    function updateCarousel() {
-        const slideWidth = document.querySelector('.video-item').offsetWidth;
-        carouselTrack.style.transition = 'transform 0.5s ease';
-        carouselTrack.style.transform = `translateX(-${currentIndex * (slideWidth + 16)}px)`; // 16px is the gap
-        
-        // Update button states
-        prevBtn.style.opacity = currentIndex === 0 ? '0.5' : '1';
-        nextBtn.style.opacity = currentIndex === videos.length - 1 ? '0.5' : '1';
-    }
-
-    prevBtn.addEventListener('click', () => {
-        if (currentIndex > 0) {
-            currentIndex--;
-            updateCarousel();
-        }
-    });
-
-    nextBtn.addEventListener('click', () => {
-        if (currentIndex < videos.length - 1) {
-            currentIndex++;
-            updateCarousel();
-        }
-    });
-
-    // Auto-scroll function with improved timing
-    let autoScrollInterval;
-    function startAutoScroll() {
-        autoScrollInterval = setInterval(() => {
-            if (currentIndex < videos.length - 1) {
-                currentIndex++;
-                updateCarousel();
-            } else {
-                currentIndex = 0;
-                updateCarousel();
-            }
-        }, 5000); // 5 seconds interval
-    }
-
-    function pauseAutoScroll() {
-        clearInterval(autoScrollInterval);
-    }
-
-    function resumeAutoScroll() {
-        clearInterval(autoScrollInterval);
-        startAutoScroll();
-    }
-
-    // Start auto-scroll when page loads
-    startAutoScroll();
-
-    // Pause auto-scroll when hovering over carousel
-    carousel.addEventListener('mouseenter', pauseAutoScroll);
-    carousel.addEventListener('mouseleave', resumeAutoScroll);
-
-    // Initial carousel setup
-    updateCarousel();
-
-    // Update carousel on window resize
-    window.addEventListener('resize', updateCarousel);
 
     // Mobile Menu Toggle
     const hamburger = document.querySelector('.hamburger');
