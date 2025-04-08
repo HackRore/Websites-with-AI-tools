@@ -5,8 +5,10 @@ document.addEventListener('DOMContentLoaded', () => {
             name: "CyberTechX",
             url: "https://youtube.com/@cybertechx_ravin?si=QFyTKEv4OMbrqLlh",
             subscribeUrl: "https://youtube.com/@cybertechx_ravin?si=QFyTKEv4OMbrqLlh"
-        },
-        videos: [
+        }, videos: [
+            { id: "5YdWcMRMQag", title: "🔥 How to Install MinGW & Set Up C++ in 2024 ✅ Complete C++ Environment Setup + VS Code 💻", date: "2025-02-20" },
+            { id: "5FY0ifeSeuk", title: "🔥 Install & Activate Office 2021 for FREE | 100% Working | Windows 10/11 🚀💻", date: "2025-02-19" },
+            { id: "Fq-K8veA3lA", title: "🚀 How to Download & Install Jupyter Notebook ✅ | Full Step-by-Step Guide (Windows) 🖥️", date: "2025-02-18" },
             { id: "iR4PcZBkFak", title: "MSBTE Android Studio Practical No. 16 | DatePicker & TimePicker Dialog | Java + XML | Source Code", date: "2025-04-10" },
             { id: "Sb5nVMUbNMg", title: "✅ Custom Toast Alert in Android Studio | Practical No. 15 | Java | MSBTE Android App Development", date: "2025-03-27" },
             { id: "D0LJcQ6PZfc", title: "MSBTE Practical No. 14 – ListView, GridView, ImageView & ScrollView in Android Studio (Java + XML)", date: "2025-03-22" },
@@ -41,6 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
             { id: "tEVqxz_tvCc", title: "🔥 Kali Linux Installation on VMware Workstation | Step-by-Step Guide for Beginners", date: "2025-02-22" },
             { id: "t1uUmfUSh-4", title: "How to Set JDK Path in Windows | Step-by-Step Guide for Beginners", date: "2025-02-21" }
         ]
+
     };
 
     // Helper Functions
@@ -56,10 +59,10 @@ document.addEventListener('DOMContentLoaded', () => {
     function createVideoElement(video) {
         // Generate thumbnail URL
         const thumbnail = `https://img.youtube.com/vi/${video.id}/mqdefault.jpg`;
-        
+
         const videoElement = document.createElement('div');
         videoElement.className = 'video-item';
-        
+
         videoElement.innerHTML = `
             <div class="video-wrapper">
                 <iframe 
@@ -78,13 +81,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="video-date">${formatDate(video.date)}</div>
             </div>
         `;
-        
+
         return videoElement;
     }
 
     // Initialize YouTube section
     const videoGrid = document.getElementById('video-grid');
-    
+
     if (!videoGrid) {
         console.error('Video grid container not found');
         return;
@@ -323,7 +326,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Update active link on scroll
     window.addEventListener('scroll', setActiveLink);
-    
+
     // Initial active link check
     setActiveLink();
 
@@ -332,7 +335,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     contactForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        
+
         // Get form data
         const formData = new FormData(contactForm);
         const data = {
@@ -350,15 +353,15 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             body: JSON.stringify(data)
         })
-        .then(response => response.json())
-        .then(data => {
-            alert('Message sent successfully!');
-            contactForm.reset();
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert('Error sending message. Please try again later.');
-        });
+            .then(response => response.json())
+            .then(data => {
+                alert('Message sent successfully!');
+                contactForm.reset();
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Error sending message. Please try again later.');
+            });
     });
 
     // Smooth Scroll for Navigation Links
