@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
             subscribeUrl: "https://youtube.com/@cybertechx_ravin?si=QFyTKEv4OMbrqLlh"
         },
         videos: [
+            { id: "Sb5nVMUbNMg", title: "✅ Custom Toast Alert in Android Studio | Practical No. 15 | Java | MSBTE Android App Development", date: "2025-03-27" },
             { id: "D0LJcQ6PZfc", title: "MSBTE Practical No. 14 – ListView, GridView, ImageView & ScrollView in Android Studio (Java + XML)", date: "2025-03-22" },
             { id: "KRHrmB8mJYg", title: "🔥 Android ProgressBar Implementation | Practical No. 13 🚀 | Android Studio Tutorial", date: "2025-03-18" },
             { id: "1L1a_jR1-H8", title: "Implementation of RadioGroups and RadioButtons in Android | Practical No. 12", date: "2025-03-14" },
