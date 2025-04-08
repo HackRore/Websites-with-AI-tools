@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
             subscribeUrl: "https://youtube.com/@cybertechx_ravin?si=QFyTKEv4OMbrqLlh"
         },
         videos: [
+            { id: "KRHrmB8mJYg", title: "🔥 Android ProgressBar Implementation | Practical No. 13 🚀 | Android Studio Tutorial", date: "2025-03-18" },
             { id: "1L1a_jR1-H8", title: "Implementation of RadioGroups and RadioButtons in Android | Practical No. 12", date: "2025-03-14" },
             { id: "1VfAScE_R50", title: "MSBTE MAD Practical 11 | Implement Checkbox in Android Studio | Source Code & Output", date: "2025-03-10" },
             { id: "o2V7W9Ye3qo", title: "🧑‍💻 MSBTE Practical 10: Create a Login Window using TextView, EditText, and Button| CyberTechX|MSBTE", date: "2025-02-15" },
