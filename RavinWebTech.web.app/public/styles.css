@@ -1198,7 +1198,6 @@ body {
     font-size: 0.9rem;
     padding: 0.5rem 1rem;
     border-radius: 25px;
-    background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.2));
     transition: var(--transition);
     border: 2px solid transparent;
 }
@@ -1839,4 +1838,19 @@ body {
     .footer-links a {
         font-size: 0.6rem;
     }
+}
+
+/* Stylish Button Styles */
+.stylish-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.stylish-btn:hover {
+    background-color: #45a049;
 }
