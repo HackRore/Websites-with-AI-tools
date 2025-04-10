@@ -221,36 +221,44 @@ document.addEventListener('DOMContentLoaded', () => {
     const hamburger = document.querySelector('.hamburger');
     const mobileMenu = document.querySelector('.mobile-menu');
     const navLinks = document.querySelector('.nav-links');
+    let isMenuOpen = false;
 
     // Toggle mobile menu
-    hamburger.addEventListener('click', () => {
+    hamburger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        isMenuOpen = !isMenuOpen;
         mobileMenu.classList.toggle('active');
         hamburger.classList.toggle('active');
-        document.body.classList.toggle('no-scroll');
+        document.body.style.overflow = isMenuOpen ? 'hidden' : 'auto';
     });
 
     // Close mobile menu when clicking a link
     document.querySelectorAll('.mobile-link').forEach(link => {
         link.addEventListener('click', () => {
+            isMenuOpen = false;
             mobileMenu.classList.remove('active');
             hamburger.classList.remove('active');
-            document.body.classList.remove('no-scroll');
+            document.body.style.overflow = 'auto';
         });
     });
 
     // Close mobile menu when clicking outside
     document.addEventListener('click', (e) => {
-        if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
+        if (isMenuOpen && !hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
+            isMenuOpen = false;
             mobileMenu.classList.remove('active');
             hamburger.classList.remove('active');
-            document.body.classList.remove('no-scroll');
+            document.body.style.overflow = 'auto';
         }
     });
 
-    // Prevent scrolling when mobile menu is open
-    document.addEventListener('touchmove', (e) => {
-        if (mobileMenu.classList.contains('active')) {
-            e.preventDefault();
+    // Handle window resize
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 768 && isMenuOpen) {
+            isMenuOpen = false;
+            mobileMenu.classList.remove('active');
+            hamburger.classList.remove('active');
+            document.body.style.overflow = 'auto';
         }
     });
 
