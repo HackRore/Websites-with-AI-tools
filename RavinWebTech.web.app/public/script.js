@@ -1,4 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Remove loading state after content is loaded
+    document.body.classList.remove('loading');
+    const loadingIndicator = document.querySelector('.loading-indicator');
+    if (loadingIndicator) {
+        loadingIndicator.classList.remove('active');
+    }
+
     // YouTube Data Structure
     const youtubeData = {
         channel: {
@@ -338,39 +345,69 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initial active link check
     setActiveLink();
 
+    // Initialize EmailJS
+    (function() {
+        emailjs.init("s5qh1KRxDGnmeh1lb"); // You'll need to replace this with your actual EmailJS user ID
+    })();
+
     // Contact Form Handling
-    const contactForm = document.getElementById('contactForm');
+    const contactForm = document.querySelector('#contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show loading state
+            const submitButton = contactForm.querySelector('button[type="submit"]');
+            const originalText = submitButton.textContent;
+            submitButton.textContent = 'Sending...';
+            submitButton.disabled = true;
 
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
+            // Get form data
+            const formData = {
+                from_name: contactForm.querySelector('[name="name"]').value,
+                from_email: contactForm.querySelector('[name="email"]').value,
+                subject: contactForm.querySelector('[name="subject"]').value,
+                message: contactForm.querySelector('[name="message"]').value
+            };
 
-        // Get form data
-        const formData = new FormData(contactForm);
-        const data = {
-            name: formData.get('name'),
-            email: formData.get('email'),
-            subject: formData.get('subject'),
-            message: formData.get('message')
-        };
-
-        // Send data to Firebase
-        fetch('https://your-firebase-url/messages', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
-            .then(response => response.json())
-            .then(data => {
-                alert('Message sent successfully!');
-                contactForm.reset();
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('Error sending message. Please try again later.');
-            });
-    });
+            // Send email using EmailJS
+            emailjs.send("service_pt9ab9e", "template_8nkgrjh", formData)
+                .then(function(response) {
+                    console.log('SUCCESS!', response.status, response.text);
+                    // Show success message
+                    const successMessage = document.createElement('div');
+                    successMessage.className = 'success-message';
+                    successMessage.textContent = 'Message sent successfully!';
+                    contactForm.appendChild(successMessage);
+                    
+                    // Reset form
+                    contactForm.reset();
+                    
+                    // Remove success message after 3 seconds
+                    setTimeout(() => {
+                        successMessage.remove();
+                    }, 3000);
+                })
+                .catch(function(error) {
+                    console.log('FAILED...', error);
+                    // Show error message
+                    const errorMessage = document.createElement('div');
+                    errorMessage.className = 'error-message';
+                    errorMessage.textContent = 'Failed to send message. Please try again.';
+                    contactForm.appendChild(errorMessage);
+                    
+                    // Remove error message after 3 seconds
+                    setTimeout(() => {
+                        errorMessage.remove();
+                    }, 3000);
+                })
+                .finally(() => {
+                    // Reset button state
+                    submitButton.textContent = originalText;
+                    submitButton.disabled = false;
+                });
+        });
+    }
 
     // Smooth Scroll for Navigation Links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -484,4 +521,11 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('scroll', checkTitleVisibility);
     // Initial check for titles in viewport
     checkTitleVisibility();
-}); 
+});
+
+// Initialize loading state
+document.body.classList.add('loading');
+const loadingIndicator = document.querySelector('.loading-indicator');
+if (loadingIndicator) {
+    loadingIndicator.classList.add('active');
+} 
