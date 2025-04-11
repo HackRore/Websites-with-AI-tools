@@ -1035,7 +1035,7 @@ p {
 
 .work-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 30px;
     padding: 0 20px;
 }
@@ -1044,30 +1044,92 @@ p {
     background: white;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     overflow: hidden;
 }
 
 .work-item:hover {
     transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
 }
 
 .work-content {
     padding: 25px;
 }
 
-.work-content h3 {
-    color: var(--primary-color);
+/* Project Header */
+.project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 15px;
+}
+
+.project-header h3 {
+    color: var(--primary-color);
+    margin: 0;
     font-size: 1.5rem;
 }
 
+.project-date {
+    color: var(--text-color);
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* Project Tags */
+.project-tags {
+    margin-bottom: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tag {
+    background-color: var(--light-bg);
+    color: var(--primary-color);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+/* Project Description */
 .work-description {
     color: var(--text-color);
     margin-bottom: 20px;
     line-height: 1.6;
 }
 
+/* Technologies Used */
+.technologies-used {
+    margin-bottom: 20px;
+}
+
+.technologies-used h4 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.tech-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tech-list li {
+    background-color: var(--light-bg);
+    color: var(--text-color);
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+/* Project Links */
 .work-links {
     display: flex;
     flex-wrap: wrap;
@@ -1084,6 +1146,7 @@ p {
     color: white;
     text-decoration: none;
     transition: background-color 0.3s ease;
+    font-size: 0.9rem;
 }
 
 .work-links .btn:hover {
@@ -1103,6 +1166,12 @@ p {
     .work-grid {
         grid-template-columns: 1fr;
         gap: 20px;
+    }
+    
+    .project-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
     }
     
     .work-links {
