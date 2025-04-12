@@ -1201,6 +1201,15 @@ section {
     .btn-primary {
         width: 100%;
     }
+
+    .features-list {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .features-list li {
+        width: 100%;
+    }
 }
 
 @media (max-width: 576px) {
@@ -1446,4 +1455,40 @@ section {
     to {
         transform: rotate(360deg);
     }
+}
+
+.project-features {
+    margin: 1.5rem 0;
+}
+
+.project-features h4 {
+    color: var(--text-color);
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.features-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+}
+
+.features-list li {
+    background: var(--light-bg);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.features-list li::before {
+    content: '✓';
+    color: var(--secondary-color);
+    font-weight: bold;
 }
