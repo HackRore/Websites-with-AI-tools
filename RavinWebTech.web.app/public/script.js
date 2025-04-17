@@ -1,18 +1,20 @@
+// Initialize loading state
+let loadingIndicator = document.getElementById('loading-indicator');
+if (loadingIndicator) {
+    loadingIndicator.classList.add('active');
+    document.body.classList.add('loading');
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     // Remove loading state after content is loaded
     document.body.classList.remove('loading');
-    const loadingIndicator = document.querySelector('.loading-indicator');
     if (loadingIndicator) {
         loadingIndicator.classList.remove('active');
     }
 
-    // YouTube Data Structure
+    // YouTube Data
     const youtubeData = {
-        channel: {
-            name: "CyberTechX",
-            url: "https://youtube.com/@cybertechx_ravin?si=QFyTKEv4OMbrqLlh",
-            subscribeUrl: "https://youtube.com/@cybertechx_ravin?si=QFyTKEv4OMbrqLlh"
-        }, videos: [
+        videos: [
             { id: "5YdWcMRMQag", title: "🔥 How to Install MinGW & Set Up C++ in 2024 ✅ Complete C++ Environment Setup + VS Code 💻", date: "2025-02-20" },
             { id: "5FY0ifeSeuk", title: "🔥 Install & Activate Office 2021 for FREE | 100% Working | Windows 10/11 🚀💻", date: "2025-02-19" },
             { id: "Fq-K8veA3lA", title: "🚀 How to Download & Install Jupyter Notebook ✅ | Full Step-by-Step Guide (Windows) 🖥️", date: "2025-02-18" },
@@ -50,7 +52,113 @@ document.addEventListener('DOMContentLoaded', () => {
             { id: "tEVqxz_tvCc", title: "🔥 Kali Linux Installation on VMware Workstation | Step-by-Step Guide for Beginners", date: "2025-02-22" },
             { id: "t1uUmfUSh-4", title: "How to Set JDK Path in Windows | Step-by-Step Guide for Beginners", date: "2025-02-21" }
         ]
+    };
 
+    // Initialize YouTube Section
+    const videoGrid = document.querySelector('.video-grid');
+    if (!videoGrid) {
+        console.error('Video grid container not found');
+        return;
+    }
+
+    // Clear existing content
+    videoGrid.innerHTML = '';
+
+    // Create video items
+    youtubeData.videos.forEach(video => {
+        const videoItem = document.createElement('div');
+        videoItem.className = 'video-item';
+        
+        videoItem.innerHTML = `
+            <div class="video-thumbnail">
+                <img src="https://img.youtube.com/vi/${video.id}/maxresdefault.jpg" alt="${video.title}">
+                <div class="video-play-icon">
+                    <i class="fas fa-play"></i>
+                </div>
+            </div>
+            <div class="video-info">
+                <h3 class="video-title">${video.title}</h3>
+                <div class="video-meta">
+                    <span class="video-date">
+                        <i class="far fa-calendar"></i>
+                        ${new Date(video.date).toLocaleDateString()}
+                    </span>
+                </div>
+            </div>
+        `;
+
+        // Add click event to open video
+        videoItem.addEventListener('click', () => {
+            window.open(`https://www.youtube.com/watch?v=${video.id}`, '_blank');
+        });
+
+        videoGrid.appendChild(videoItem);
+    });
+
+    // Hide loading indicator after page load
+    window.addEventListener('load', () => {
+        if (loadingIndicator) {
+            loadingIndicator.classList.add('hidden');
+            setTimeout(() => {
+                loadingIndicator.style.display = 'none';
+            }, 500);
+        }
+    });
+
+    // Show loading indicator for 2 seconds minimum
+    setTimeout(() => {
+        if (loadingIndicator) {
+            loadingIndicator.classList.add('hidden');
+            setTimeout(() => {
+                loadingIndicator.style.display = 'none';
+            }, 500);
+        }
+    }, 2000);
+
+    // YouTube Data Structure
+    const youtubeDataStructure = {
+        channel: {
+            name: "CyberTechX",
+            url: "https://youtube.com/@cybertechx_ravin?si=QFyTKEv4OMbrqLlh",
+            subscribeUrl: "https://youtube.com/@cybertechx_ravin?si=QFyTKEv4OMbrqLlh"
+        },
+        videos: [
+            {
+                id: "5YdWcMRMQag",
+                title: "🔥 How to Install MinGW & Set Up C++ in 2024 ✅ Complete C++ Environment Setup + VS Code 💻",
+                description: "Learn how to set up a complete C++ development environment with MinGW and VS Code in 2024.",
+                date: "2025-02-20",
+                views: "1.2K"
+            },
+            {
+                id: "5FY0ifeSeuk",
+                title: "🔥 Install & Activate Office 2021 for FREE | 100% Working | Windows 10/11 🚀💻",
+                description: "Step-by-step guide to install and activate Microsoft Office 2021 for free on Windows 10/11.",
+                date: "2025-02-19",
+                views: "2.5K"
+            },
+            {
+                id: "Fq-K8veA3lA",
+                title: "🚀 How to Download & Install Jupyter Notebook ✅ | Full Step-by-Step Guide (Windows) 🖥️",
+                description: "Complete guide to installing and setting up Jupyter Notebook on Windows.",
+                date: "2025-02-18",
+                views: "3.1K"
+            },
+            {
+                id: "iR4PcZBkFak",
+                title: "MSBTE Android Studio Practical No. 16 | DatePicker & TimePicker Dialog | Java + XML | Source Code",
+                description: "Learn how to implement DatePicker and TimePicker dialogs in Android Studio.",
+                date: "2025-04-10",
+                views: "1.8K"
+            },
+            {
+                id: "Sb5nVMUbNMg",
+                title: "✅ Custom Toast Alert in Android Studio | Practical No. 15 | Java | MSBTE Android App Development",
+                description: "Create custom toast alerts in Android Studio with Java.",
+                date: "2025-03-27",
+                views: "2.1K"
+            }
+        ]
     };
 
     // Helper Functions
@@ -64,9 +172,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function createVideoElement(video) {
-        // Generate thumbnail URL
-        const thumbnail = `https://img.youtube.com/vi/${video.id}/mqdefault.jpg`;
-
         const videoElement = document.createElement('div');
         videoElement.className = 'video-item';
 
@@ -90,38 +195,6 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
 
         return videoElement;
-    }
-
-    // Initialize YouTube section
-    const videoGrid = document.getElementById('video-grid');
-
-    if (!videoGrid) {
-        console.error('Video grid container not found');
-        return;
-    }
-
-    // Create video items
-    youtubeData.videos.forEach(video => {
-        const videoElement = createVideoElement(video);
-        videoGrid.appendChild(videoElement);
-    });
-
-    // Force iframe visibility after initialization
-    setTimeout(() => {
-        const iframes = document.querySelectorAll('.video-wrapper iframe');
-        iframes.forEach(iframe => {
-            iframe.style.opacity = '1';
-            iframe.style.visibility = 'visible';
-            iframe.style.display = 'block';
-        });
-    }, 1000);
-
-    // Add click handler for the subscribe button
-    const subscribeBtn = document.querySelector('.subscribe-btn');
-    if (subscribeBtn) {
-        subscribeBtn.addEventListener('click', () => {
-            window.location.href = youtubeData.channel.subscribeUrl;
-        });
     }
 
     // Certificates data with categories
@@ -530,26 +603,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initial check for titles in viewport
     checkTitleVisibility();
 
-    // Loading state handling
-    const loadingIndicator = document.getElementById('loading-indicator');
-    if (loadingIndicator) {
-        // Hide loading indicator after page load
-        window.addEventListener('load', () => {
-            loadingIndicator.classList.add('hidden');
-            setTimeout(() => {
-                loadingIndicator.style.display = 'none';
-            }, 500);
-        });
-
-        // Show loading indicator for 2 seconds minimum
-        setTimeout(() => {
-            loadingIndicator.classList.add('hidden');
-            setTimeout(() => {
-                loadingIndicator.style.display = 'none';
-            }, 500);
-        }, 2000);
-    }
-
     // Error handling for failed resource loading
     window.addEventListener('error', (e) => {
         if (e.target.tagName === 'IMG') {
@@ -566,11 +619,4 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('online', () => {
         showToast('You are back online!', 'success');
     });
-});
-
-// Initialize loading state
-document.body.classList.add('loading');
-const loadingIndicator = document.querySelector('.loading-indicator');
-if (loadingIndicator) {
-    loadingIndicator.classList.add('active');
-} 
+}); 
