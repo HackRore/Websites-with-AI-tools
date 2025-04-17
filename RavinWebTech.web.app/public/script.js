@@ -370,43 +370,51 @@ document.addEventListener('DOMContentLoaded', () => {
                 message: contactForm.querySelector('[name="message"]').value
             };
 
+            // Validate form data
+            if (!formData.from_name || !formData.from_email || !formData.subject || !formData.message) {
+                showToast('Please fill in all fields', 'error');
+                submitButton.textContent = originalText;
+                submitButton.disabled = false;
+                return;
+            }
+
             // Send email using EmailJS
             emailjs.send("service_pt9ab9e", "template_8nkgrjh", formData)
                 .then(function(response) {
                     console.log('SUCCESS!', response.status, response.text);
-                    // Show success message
-                    const successMessage = document.createElement('div');
-                    successMessage.className = 'success-message';
-                    successMessage.textContent = 'Message sent successfully!';
-                    contactForm.appendChild(successMessage);
-                    
-                    // Reset form
+                    showToast('Message sent successfully!', 'success');
                     contactForm.reset();
-                    
-                    // Remove success message after 3 seconds
-                    setTimeout(() => {
-                        successMessage.remove();
-                    }, 3000);
                 })
                 .catch(function(error) {
                     console.log('FAILED...', error);
-                    // Show error message
-                    const errorMessage = document.createElement('div');
-                    errorMessage.className = 'error-message';
-                    errorMessage.textContent = 'Failed to send message. Please try again.';
-                    contactForm.appendChild(errorMessage);
-                    
-                    // Remove error message after 3 seconds
-                    setTimeout(() => {
-                        errorMessage.remove();
-                    }, 3000);
+                    showToast('Failed to send message. Please try again.', 'error');
                 })
                 .finally(() => {
-                    // Reset button state
                     submitButton.textContent = originalText;
                     submitButton.disabled = false;
                 });
         });
+    }
+
+    // Toast notification function
+    function showToast(message, type = 'info') {
+        const toast = document.createElement('div');
+        toast.className = `toast ${type}`;
+        toast.textContent = message;
+        document.body.appendChild(toast);
+
+        // Add animation
+        setTimeout(() => {
+            toast.classList.add('show');
+        }, 100);
+
+        // Remove after 3 seconds
+        setTimeout(() => {
+            toast.classList.remove('show');
+            setTimeout(() => {
+                toast.remove();
+            }, 300);
+        }, 3000);
     }
 
     // Smooth Scroll for Navigation Links
@@ -521,6 +529,43 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('scroll', checkTitleVisibility);
     // Initial check for titles in viewport
     checkTitleVisibility();
+
+    // Loading state handling
+    const loadingIndicator = document.getElementById('loading-indicator');
+    if (loadingIndicator) {
+        // Hide loading indicator after page load
+        window.addEventListener('load', () => {
+            loadingIndicator.classList.add('hidden');
+            setTimeout(() => {
+                loadingIndicator.style.display = 'none';
+            }, 500);
+        });
+
+        // Show loading indicator for 2 seconds minimum
+        setTimeout(() => {
+            loadingIndicator.classList.add('hidden');
+            setTimeout(() => {
+                loadingIndicator.style.display = 'none';
+            }, 500);
+        }, 2000);
+    }
+
+    // Error handling for failed resource loading
+    window.addEventListener('error', (e) => {
+        if (e.target.tagName === 'IMG') {
+            e.target.src = './img/placeholder.jpg';
+            e.target.classList.add('error');
+        }
+    }, true);
+
+    // Handle offline/online state
+    window.addEventListener('offline', () => {
+        showToast('You are currently offline. Some features may be limited.', 'info');
+    });
+
+    window.addEventListener('online', () => {
+        showToast('You are back online!', 'success');
+    });
 });
 
 // Initialize loading state
