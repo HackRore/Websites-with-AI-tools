@@ -15,6 +15,17 @@ document.addEventListener('DOMContentLoaded', () => {
     // YouTube Data
     const youtubeData = {
         videos: [
+           
+            { id: "x6JetiaaKzY", title: "Python Password Strength Checker Project How to Check Your Password Strength with Python | Project 3", date: "2025-04-26" },
+            { id: "vDh4LU2YiVw", title: "🕵️‍♂️ How I Built a Port Scanner in Python Using Nmap | Real-World Cyber Security Project", date: "2025-04-25" },
+            { id: "RwTI3L01b0s", title: "🔐 Simple Image Encryption Using Python |Beginner Friendly Project No. 2 | Cyber Security|CyberTechX", date: "2025-04-25" },
+            { id: "Uux6OirWXVw", title: "🔐 Caesar Cipher Project | Python Encryption Tool for Beginners | Cyber Security Projects #1", date: "2025-04-25" },
+            { id: "RtMRNfQnVaU", title: "🔐 Snort IDS project Full Setup on Ubuntu Detect Network Attacks | Project + Demo by CyberTechX_ravin", date: "2025-04-13" },
+            { id: "y3kTWWGBOuU", title: "🔥 Practical No. 18 – Explicit vs Implicit Intents in Android Studio 💥 | Clear Demo with Java!", date: "2025-04-13" },
+            { id: "pyvNkCKeHnw", title: "MSBTE Practical 17 | Create an Activity in Android | Java + XML | Android Studio Tutorial", date: "2025-04-11" },
+            { id: "uK5MCgdlLFo", title: "🔥How to Create a Free AWS Account in 2025 | Step-by-Step Guide for Beginners💻", date: "2025-04-11" },
+            { id: "ANtZHvHrEVI", title: "✅ MSBTE Android Practical 19 | Content Provider in Android Studio (Java/XML) | MSBTE MAD Practicals", date: "2025-04-14" },
+            { id: "N_dYrVoE__Y", title: "How Ethical Hackers Secretly Access YouTube Video Data Using Python! (YouTube Data API v3 Tutorial)", date: "2025-04-12" },
             { id: "5YdWcMRMQag", title: "🔥 How to Install MinGW & Set Up C++ in 2024 ✅ Complete C++ Environment Setup + VS Code 💻", date: "2025-02-20" },
             { id: "5FY0ifeSeuk", title: "🔥 Install & Activate Office 2021 for FREE | 100% Working | Windows 10/11 🚀💻", date: "2025-02-19" },
             { id: "Fq-K8veA3lA", title: "🚀 How to Download & Install Jupyter Notebook ✅ | Full Step-by-Step Guide (Windows) 🖥️", date: "2025-02-18" },
