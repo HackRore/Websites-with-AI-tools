@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ravindra Ahire - Certifications</title>
+    <meta name="description" content="Professional certifications and achievements in Cyber Security, Programming, and Tools & Platforms">
+    <meta name="keywords" content="certifications, cyber security, programming, achievements">
+    <title>Ravindra Ahire - Professional Certifications</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="certifications.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -12,17 +14,18 @@
 <body>
     <!-- Navigation -->
     <nav class="navbar">
-        <div class="nav-brand">Ravindra Ahire</div>
+        <div class="nav-brand">
+            <i class="fas fa-award"></i> Ravindra Ahire
+        </div>
         <ul class="nav-links">
-            <li><a href="index.html" class="nav-link">Home</a></li>
-            <li><a href="index.html#about" class="nav-link">About</a></li>
-            <li><a href="index.html#skills" class="nav-link">Skills</a></li>
-            <li><a href="index.html#work" class="nav-link">Work</a></li>
-            <li><a href="index.html#youtube" class="nav-link">YouTube</a></li>
-            <li><a href="certifications.html" class="nav-link active">Certifications</a></li>
-            <li><a href="./assets/HacKRore Resume_ATS.pdf" class="nav-link">Resume</a></li>
-            <!-- <li><a href="./assets/Ravindra Ahire USDC base resume.pdf" class="nav-link">Resume</a></li> -->
-            <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+            <li><a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="index.html#about" class="nav-link"><i class="fas fa-user"></i> About</a></li>
+            <li><a href="index.html#skills" class="nav-link"><i class="fas fa-code"></i> Skills</a></li>
+            <li><a href="index.html#work" class="nav-link"><i class="fas fa-briefcase"></i> Work</a></li>
+            <li><a href="index.html#youtube" class="nav-link"><i class="fab fa-youtube"></i> YouTube</a></li>
+            <li><a href="certifications.html" class="nav-link active"><i class="fas fa-certificate"></i> Certifications</a></li>
+            <li><a href="./assets/HacKRore Resume_ATS.pdf" class="nav-link"><i class="fas fa-file-pdf"></i> Resume</a></li>
+            <li><a href="index.html#contact" class="nav-link"><i class="fas fa-envelope"></i> Contact</a></li>
         </ul>
         <div class="hamburger">
             <span></span>
@@ -31,39 +34,94 @@
         </div>
     </nav>
 
-    <!-- Header -->
+    <!-- Header Section -->
     <header class="cert-header">
-        <h1>My Certifications</h1>
-        <p>A collection of my professional certifications and achievements</p>
+        <div class="header-content">
+            <div class="header-badge">
+                <i class="fas fa-trophy"></i>
+            </div>
+            <h1>Professional Certifications</h1>
+            <p>A comprehensive collection of my professional certifications and achievements</p>
+            <div class="cert-stats">
+                <div class="stat">
+                    <span class="stat-number" data-count="16">16</span>
+                    <span class="stat-label">Certifications</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number" data-count="3">3</span>
+                    <span class="stat-label">Categories</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number" data-count="100">100%</span>
+                    <span class="stat-label">Verified</span>
+                </div>
+            </div>
+        </div>
     </header>
 
-    <!-- Certifications Section -->
-    <section class="certifications-page">
-        <div class="cert-filters">
-            <button class="filter-btn active" data-filter="all">All Certificates</button>
-            <button class="filter-btn" data-filter="cybersecurity">Cyber Security</button>
-            <button class="filter-btn" data-filter="programming">Programming</button>
-            <button class="filter-btn" data-filter="tools">Tools & Platforms</button>
+    <!-- Main Content -->
+    <main class="certifications-page">
+        <!-- Filter Buttons -->
+        <div class="filters-container">
+            <div class="filter-section">
+                <h3 class="filter-title">
+                    <i class="fas fa-filter"></i> Filter by Category
+                </h3>
+                <div class="cert-filters">
+                    <button class="filter-btn active" data-filter="all">
+                        <i class="fas fa-th"></i> All Certificates <span class="count">(16)</span>
+                    </button>
+                    <button class="filter-btn" data-filter="cybersecurity">
+                        <i class="fas fa-shield-alt"></i> Cyber Security <span class="count">(3)</span>
+                    </button>
+                    <button class="filter-btn" data-filter="programming">
+                        <i class="fas fa-laptop-code"></i> Programming <span class="count">(7)</span>
+                    </button>
+                    <button class="filter-btn" data-filter="tools">
+                        <i class="fas fa-tools"></i> Tools & Platforms <span class="count">(6)</span>
+                    </button>
+                </div>
+            </div>
         </div>
 
-        <div class="cert-grid">
+        <!-- Certificates Grid -->
+        <div class="cert-grid" id="certGrid">
             <!-- Certificates will be added dynamically via JavaScript -->
         </div>
-    </section>
+
+        <!-- No Results Message -->
+        <div class="no-results" style="display: none;">
+            <i class="fas fa-inbox"></i>
+            <h3>No Certificates Found</h3>
+            <p>Please try a different filter</p>
+        </div>
+    </main>
 
     <!-- Certificate Modal -->
-    <div class="cert-modal">
+    <div class="cert-modal" id="certModal">
         <div class="modal-overlay"></div>
         <div class="modal-container">
-            <button class="modal-close">&times;</button>
+            <button class="modal-close" aria-label="Close modal">
+                <i class="fas fa-times"></i>
+            </button>
             <div class="modal-content">
-                <img src="" alt="" class="modal-image">
+                <div class="modal-image-wrapper">
+                    <img src="" alt="" class="modal-image" id="modalImage">
+                </div>
                 <div class="modal-info">
-                    <h3 class="modal-title"></h3>
-                    <p class="modal-description"></p>
-                    <a href="./assets/PR _CS_Ravindra Ahire_resume (2).pdf" class="download-btn" download>
-                        <i class="fas fa-download"></i> Download Certificate
-                    </a>
+                    <h3 class="modal-title" id="modalTitle"></h3>
+                    <p class="modal-description" id="modalDescription"></p>
+                    <div class="modal-category">
+                        <span class="category-badge" id="modalCategory"></span>
+                    </div>
+                    <div class="modal-actions">
+                        <button class="download-btn" id="downloadBtn">
+                            <i class="fas fa-download"></i> Download Certificate
+                        </button>
+                        <button class="share-btn" id="shareBtn">
+                            <i class="fas fa-share-alt"></i> Share
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -72,12 +130,38 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/ravindra-ahire-a43902296" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/HackRore" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="https://youtube.com/@CyberTechX_ravin" target="_blank"><i class="fab fa-youtube"></i></a>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
             </div>
+            <div class="footer-section">
+                <h4>Connect</h4>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/ravindra-ahire-a43902296" target="_blank" rel="noopener" title="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://github.com/HackRore" target="_blank" rel="noopener" title="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://youtube.com/@CyberTechX_ravin" target="_blank" rel="noopener" title="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Follow</h4>
+                <a href="https://www.instagram.com/_ravi_ahire_/" target="_blank" rel="noopener" title="Instagram">
+                    <i class="fab fa-instagram"></i> Instagram
+                </a>
+            </div>
+        </div>
+        <div class="footer-bottom">
             <p>&copy; 2024 Ravindra Pandit Ahire. All rights reserved.</p>
+            <p>Certifications verified and up-to-date</p>
         </div>
     </footer>
 
