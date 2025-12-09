@@ -250,4 +250,113 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    //---------------------------------
+    //      AI ASSISTANT WIDGET
+    //---------------------------------
+    function createAIWidget() {
+        // Build widget container
+        const widget = document.createElement('div');
+        widget.className = 'ai-widget';
+
+        widget.innerHTML = `
+            <button class="ai-fab" aria-label="Open AI Assistant" title="Ask AI"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.1 2 5 5.1 5 9c0 3.9 3.1 7 7 7s7-3.1 7-7c0-3.9-3.1-7-7-7z" fill="white" opacity="0.12"/><path d="M12 6.5c.96 0 1.75.79 1.75 1.75S12.96 10 12 10s-1.75-.79-1.75-1.75S11.04 6.5 12 6.5z" fill="white"/><path d="M11 12h2v5h-2z" fill="white"/></svg></button>
+            <div class="ai-panel" role="dialog" aria-modal="false" aria-hidden="true">
+                <div class="ai-header">
+                    <div>
+                        <div class="ai-title">AI Portfolio Assistant</div>
+                        <div class="ai-sub">Ask about projects, certificates, or site features</div>
+                    </div>
+                </div>
+                <div class="ai-messages" aria-live="polite"></div>
+                <div class="ai-quick">
+                    <button data-q="Show my top projects">Top projects</button>
+                    <button data-q="Show my certifications">My certificates</button>
+                    <button data-q="How to contact you?">Contact info</button>
+                </div>
+                <form class="ai-input" action="#">
+                    <input type="text" aria-label="Message to AI" placeholder="Ask me (e.g. 'show certificates')" />
+                    <button class="ai-send" aria-label="Send">Ask</button>
+                </form>
+            </div>
+        `;
+
+        document.body.appendChild(widget);
+
+        const fab = widget.querySelector('.ai-fab');
+        const panel = widget.querySelector('.ai-panel');
+        const messages = widget.querySelector('.ai-messages');
+        const form = widget.querySelector('.ai-input');
+        const input = form.querySelector('input');
+        const quick = widget.querySelector('.ai-quick');
+
+        function appendMessage(content, who='bot') {
+            const m = document.createElement('div');
+            m.className = 'msg ' + (who === 'user' ? 'user' : 'bot');
+            m.textContent = content;
+            messages.appendChild(m);
+            messages.scrollTop = messages.scrollHeight;
+        }
+
+        function botReplyFor(text) {
+            const t = text.toLowerCase();
+            if (t.includes('cert')) {
+                return 'I can show your certifications. Try visiting the Certificates page or say "download certificate" to simulate a download.';
+            }
+            if (t.includes('project') || t.includes('work') || t.includes('top')) {
+                return 'Top projects: SNORT IDS, Image Encryption Tool, Brain Tumor Detection. Want links or a summary of one?';
+            }
+            if (t.includes('contact')) {
+                return 'You can reach out via email: RavindraAhire897@gmail.com or visit the Contact section on this page.';
+            }
+            if (t.includes('ai') || t.includes('chatgpt') || t.includes('how')) {
+                return 'This demo shows an AI assistant embedded in the site. For a production assistant we can connect to an LLM via secure server-side integration (OpenAI, Azure or self-hosted models).';
+            }
+            // default
+            return 'Nice question — here is a short answer: this portfolio highlights cybersecurity, AI, and web development work. Ask me for specifics like "show certificates" or "top projects".';
+        }
+
+        function simulateResponse(text) {
+            // show typing indicator
+            const typing = document.createElement('div');
+            typing.className = 'msg bot';
+            typing.textContent = 'AI is typing…';
+            messages.appendChild(typing);
+            messages.scrollTop = messages.scrollHeight;
+
+            setTimeout(() => {
+                typing.remove();
+                appendMessage(botReplyFor(text), 'bot');
+            }, 700 + Math.min(2000, text.length * 30));
+        }
+
+        fab.addEventListener('click', () => {
+            const open = panel.classList.toggle('open');
+            panel.setAttribute('aria-hidden', !open);
+            if (open) {
+                // greet
+                appendMessage('Hello! I am your on-site AI assistant. Ask me about projects, certificates, or site features.');
+            }
+        });
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const val = input.value && input.value.trim();
+            if (!val) return;
+            appendMessage(val, 'user');
+            input.value = '';
+            simulateResponse(val);
+        });
+
+        quick.addEventListener('click', (e) => {
+            if (e.target.tagName === 'BUTTON') {
+                const q = e.target.getAttribute('data-q');
+                appendMessage(q, 'user');
+                simulateResponse(q);
+            }
+        });
+    }
+
+    // Create widget once DOM is ready
+    try { createAIWidget(); } catch (err) { console.warn('AI widget failed to initialize', err); }
+
 });
