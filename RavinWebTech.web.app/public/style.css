@@ -239,6 +239,118 @@ body {
 }
 /* AI widget removed - UI simplified per request */
 
+/* Theme toggle button styling */
+.theme-toggle {
+    position: relative;
+    width: 44px;
+    height: 44px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-primary);
+    font-size: 1.2rem;
+    transition: var(--transition-fast);
+    border-radius: var(--radius-md);
+}
+
+.theme-toggle:hover {
+    background: rgba(0, 0, 0, 0.05);
+    transform: scale(1.05);
+}
+
+.theme-toggle:active {
+    transform: scale(0.95);
+}
+
+@media (prefers-color-scheme: dark) {
+    .theme-toggle:hover {
+        background: rgba(255, 255, 255, 0.1);
+    }
+}
+
+.theme-toggle i {
+    transition: transform 0.3s ease;
+}
+
+.theme-toggle.sun-mode i {
+    transform: rotate(180deg);
+}
+
+/* Dark mode theme overrides */
+:root[data-theme="dark"] {
+    color-scheme: dark;
+}
+
+:root[data-theme="dark"] body {
+    background: var(--dark-bg-primary);
+    color: var(--dark-text-primary);
+}
+
+:root[data-theme="dark"] .navbar {
+    background: rgba(20, 20, 20, 0.95);
+    border-bottom-color: var(--dark-border-color);
+}
+
+:root[data-theme="dark"] .nav-brand,
+:root[data-theme="dark"] .nav-links a {
+    color: var(--dark-text-primary);
+}
+
+:root[data-theme="dark"] .section-title {
+    color: var(--dark-text-primary);
+}
+
+:root[data-theme="dark"] .card,
+:root[data-theme="dark"] .cert-card,
+:root[data-theme="dark"] .work-item,
+:root[data-theme="dark"] .certification-item {
+    background: var(--dark-bg-secondary);
+    color: var(--dark-text-primary);
+    border-color: var(--dark-border-color);
+}
+
+:root[data-theme="dark"] .cta-button,
+:root[data-theme="dark"] .btn,
+:root[data-theme="dark"] .download-button {
+    background: var(--ios-blue);
+    color: white;
+}
+
+:root[data-theme="dark"] .hero {
+    background: linear-gradient(135deg, var(--dark-bg-secondary), var(--dark-bg-tertiary));
+}
+
+:root[data-theme="dark"] input,
+:root[data-theme="dark"] textarea {
+    background: var(--dark-bg-secondary);
+    color: var(--dark-text-primary);
+    border-color: var(--dark-border-color);
+}
+
+:root[data-theme="dark"] input::placeholder,
+:root[data-theme="dark"] textarea::placeholder {
+    color: var(--dark-text-secondary);
+}
+
+:root[data-theme="dark"] .footer {
+    background: var(--dark-bg-secondary);
+    color: var(--dark-text-primary);
+    border-top-color: var(--dark-border-color);
+}
+
+/* Light mode toggle when manually set */
+:root[data-theme="light"] {
+    color-scheme: light;
+}
+
+:root[data-theme="light"] body {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+}
+
 .dropdown-menu li a {
     display: block;
     padding: 0.75rem 1.5rem;

@@ -8,6 +8,78 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     //---------------------------------
+    //      THEME TOGGLE
+    //---------------------------------
+    const themeToggle = document.getElementById('theme-toggle');
+    const htmlElement = document.documentElement;
+    
+    // Initialize theme from localStorage or system preference
+    const savedTheme = localStorage.getItem('theme') || 'system';
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    function updateTheme(theme) {
+        localStorage.setItem('theme', theme);
+        
+        if (theme === 'system') {
+            htmlElement.removeAttribute('data-theme');
+            updateThemeIcon();
+        } else if (theme === 'dark') {
+            htmlElement.setAttribute('data-theme', 'dark');
+            updateThemeIcon();
+        } else if (theme === 'light') {
+            htmlElement.setAttribute('data-theme', 'light');
+            updateThemeIcon();
+        }
+    }
+    
+    function updateThemeIcon() {
+        if (!themeToggle) return;
+        
+        const isDark = htmlElement.getAttribute('data-theme') === 'dark' || 
+                       (!htmlElement.getAttribute('data-theme') && prefersDark);
+        
+        const icon = themeToggle.querySelector('i');
+        if (icon) {
+            if (isDark) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+                themeToggle.classList.add('sun-mode');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+                themeToggle.classList.remove('sun-mode');
+            }
+        }
+    }
+    
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            const current = htmlElement.getAttribute('data-theme') || 'system';
+            let next = 'dark';
+            
+            if (current === 'system' || current === null) {
+                next = prefersDark ? 'light' : 'dark';
+            } else if (current === 'dark') {
+                next = 'light';
+            } else {
+                next = 'dark';
+            }
+            
+            updateTheme(next);
+        });
+    }
+    
+    // Listen for system theme changes
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+        if (localStorage.getItem('theme') === 'system' || !localStorage.getItem('theme')) {
+            updateThemeIcon();
+        }
+    });
+    
+    // Initialize on load
+    updateTheme(savedTheme);
+
+    //---------------------------------
     //      BUBBLE EFFECT (optional)
     //---------------------------------
     // Only initialize the bubble canvas if it exists on the page.
