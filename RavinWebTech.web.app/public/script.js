@@ -8,78 +8,81 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     //---------------------------------
-    //      BUBBLE EFFECT
+    //      BUBBLE EFFECT (optional)
     //---------------------------------
+    // Only initialize the bubble canvas if it exists on the page.
     const canvas = document.getElementById('bubble-canvas');
-    const ctx = canvas.getContext('2d');
+    if (canvas && canvas.getContext) {
+        const ctx = canvas.getContext('2d');
 
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-    let bubbles = [];
-
-    class Bubble {
-        constructor(x, y, radius, dx, dy) {
-            this.x = x;
-            this.y = y;
-            this.radius = radius;
-            this.dx = dx;
-            this.dy = dy;
-            this.color = `rgba(0, 198, 255, ${Math.random()})`;
-        }
-
-        draw() {
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
-            ctx.fillStyle = this.color;
-            ctx.fill();
-        }
-
-        update() {
-            if (this.x + this.radius > canvas.width || this.x - this.radius < 0) {
-                this.dx = -this.dx;
-            }
-
-            if (this.y + this.radius > canvas.height || this.y - this.radius < 0) {
-                this.dy = -this.dy;
-            }
-
-            this.x += this.dx;
-            this.y += this.dy;
-
-            this.draw();
-        }
-    }
-
-    function init() {
-        bubbles = [];
-        for (let i = 0; i < 50; i++) {
-            const radius = Math.random() * 10 + 5;
-            const x = Math.random() * (canvas.width - radius * 2) + radius;
-            const y = Math.random() * (canvas.height - radius * 2) + radius;
-            const dx = (Math.random() - 0.5) * 2;
-            const dy = (Math.random() - 0.5) * 2;
-            bubbles.push(new Bubble(x, y, radius, dx, dy));
-        }
-    }
-
-    function animate() {
-        requestAnimationFrame(animate);
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-        bubbles.forEach(bubble => {
-            bubble.update();
-        });
-    }
-
-    init();
-    animate();
-
-    window.addEventListener('resize', () => {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
+
+        let bubbles = [];
+
+        class Bubble {
+            constructor(x, y, radius, dx, dy) {
+                this.x = x;
+                this.y = y;
+                this.radius = radius;
+                this.dx = dx;
+                this.dy = dy;
+                this.color = `rgba(0, 198, 255, ${Math.random()})`;
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
+                ctx.fillStyle = this.color;
+                ctx.fill();
+            }
+
+            update() {
+                if (this.x + this.radius > canvas.width || this.x - this.radius < 0) {
+                    this.dx = -this.dx;
+                }
+
+                if (this.y + this.radius > canvas.height || this.y - this.radius < 0) {
+                    this.dy = -this.dy;
+                }
+
+                this.x += this.dx;
+                this.y += this.dy;
+
+                this.draw();
+            }
+        }
+
+        function init() {
+            bubbles = [];
+            for (let i = 0; i < 50; i++) {
+                const radius = Math.random() * 10 + 5;
+                const x = Math.random() * (canvas.width - radius * 2) + radius;
+                const y = Math.random() * (canvas.height - radius * 2) + radius;
+                const dx = (Math.random() - 0.5) * 2;
+                const dy = (Math.random() - 0.5) * 2;
+                bubbles.push(new Bubble(x, y, radius, dx, dy));
+            }
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            bubbles.forEach(bubble => {
+                bubble.update();
+            });
+        }
+
         init();
-    });
+        animate();
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            init();
+        });
+    }
 
     //---------------------------------
     //      RESPONSIVE NAVBAR
@@ -89,10 +92,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const dropdown = document.querySelector('.dropdown');
     const dropdownMenu = document.querySelector('.dropdown-menu');
 
-    hamburger.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-        hamburger.classList.toggle('active');
-    });
+    if (hamburger && navLinks) {
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+    }
 
     function handleNav() {
         const navWidth = navLinks.offsetWidth;
@@ -154,7 +159,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Initial check after a short delay to ensure rendering
-    setTimeout(handleNav, 100);
+    if (typeof handleNav === 'function') setTimeout(() => { if (navLinks) handleNav(); }, 100);
 
     //---------------------------------
     //      SKILLS SECTION
@@ -241,14 +246,17 @@ document.addEventListener('DOMContentLoaded', () => {
     //---------------------------------
     //      HEADER SCROLL EFFECT
     //---------------------------------
-    const header = document.querySelector('.header');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-    });
+    // Prefer .header, fallback to .navbar or <header>
+    const header = document.querySelector('.header') || document.querySelector('.navbar') || document.querySelector('header');
+    if (header) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    }
 
     //---------------------------------
     //      AI ASSISTANT WIDGET
