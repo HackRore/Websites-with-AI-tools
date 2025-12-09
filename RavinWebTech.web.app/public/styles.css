@@ -1,29 +1,31 @@
 /* Modern Color Scheme */
 :root {
-    --primary-color: #4f46e5;
-    --secondary-color: #7c3aed;
-    --accent-color: #8b5cf6;
-    --text-color: #1f2937;
-    --text-secondary: #6b7280;
-    --background-color: #f9fafb;
-    --card-bg: #ffffff;
-    --card-hover: #f3f4f6;
-    --gradient-primary: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
-    --gradient-secondary: linear-gradient(135deg, #7c3aed 0%, #4f46e5 100%);
-    --shadow-color: rgba(0, 0, 0, 0.1);
-    --border-color: rgba(0, 0, 0, 0.1);
-    --success-color: #10b981;
-    --error-color: #ef4444;
-    --warning-color: #f59e0b;
-    --light-text: #636e72;
+    /* Accent colors tuned to macOS/iOS */
+    --primary-color: #007AFF; /* macOS system blue */
+    --secondary-color: #5856D6;
+    --accent-color: #34C759;
+    --text-color: #0b1220;
+    --text-secondary: #51585f;
+    --background-color: #f6f7fb;
+    --bg-gradient: linear-gradient(180deg,#fbfdff 0%, #f6f7fb 100%);
+    --card-bg: rgba(255,255,255,0.85);
+    --card-hover: rgba(245,245,250,0.9);
+    --gradient-primary: linear-gradient(135deg, #007AFF 0%, #5856D6 100%);
+    --gradient-secondary: linear-gradient(135deg, #5856D6 0%, #007AFF 100%);
+    --shadow-color: rgba(15, 23, 42, 0.06);
+    --border-color: rgba(15,23,42,0.06);
+    --success-color: #34C759;
+    --error-color: #FF3B30;
+    --warning-color: #FF9500;
+    --light-text: #6b7280;
     --bg-color: #ffffff;
-    --section-bg: #f8f9fa;
+    --section-bg: #f7f8fb;
     --light-bg: #f1f2f6;
-    --dark-bg: #2d3436;
-    --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
-    --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
-    --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
-    --transition: all 0.3s ease;
+    --dark-bg: #1c1c1e;
+    --shadow-sm: 0 4px 14px rgba(0,0,0,0.06);
+    --shadow-md: 0 8px 30px rgba(0,0,0,0.08);
+    --shadow-lg: 0 20px 60px rgba(0,0,0,0.12);
+    --transition: all 0.28s cubic-bezier(.2,.9,.2,1);
 }
 
 /* Base Styles */
@@ -34,10 +36,10 @@
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: var(--font-family, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif);
     line-height: 1.6;
     color: var(--text-color);
-    background-color: var(--background-color);
+    background: var(--bg-gradient, var(--background-color));
     overflow-x: hidden;
     padding: 0;
     margin: 0;
@@ -869,6 +871,237 @@ section {
     box-shadow: var(--shadow-md);
 }
 
+@media (max-width: 768px) {
+    .container {
+        padding: 0 1rem;
+    }
+
+    .navbar {
+        padding: 1rem 1.5%;
+        flex-wrap: wrap;
+    }
+
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        gap: 0.5rem;
+        background: var(--card-bg);
+        padding: 1rem;
+        z-index: 999;
+        width: 100%;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .hero {
+        padding-top: 5rem;
+        padding-bottom: 2rem;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero h2 {
+        font-size: 1.3rem;
+    }
+
+    .hero-cta {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .cta-button {
+        width: 100%;
+        text-align: center;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .work-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .work-item {
+        padding: 1.2rem;
+    }
+
+    .work-links {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .about-content {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .cert-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .contact {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .contact-info,
+    .contact-form {
+        width: 100%;
+    }
+
+    .form-group {
+        margin-bottom: 1rem;
+    }
+
+    .footer {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .footer-links {
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 0.75rem;
+    }
+
+    .navbar {
+        padding: 0.75rem 1%;
+    }
+
+    .logo-text {
+        display: none;
+    }
+
+    .hero {
+        padding-top: 4.5rem;
+        padding-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+        font-size: 1.5rem;
+    }
+
+    .hero h2 {
+        font-size: 1.1rem;
+    }
+
+    .hero-social-links {
+        gap: 0.75rem;
+    }
+
+    .social-link {
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+
+    .skill-category {
+        padding: 1rem;
+    }
+
+    .cert-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+
+    .cert-card {
+        padding: 0.75rem;
+    }
+
+    .work-item {
+        padding: 0.75rem;
+    }
+
+    .about-image {
+        width: 100%;
+    }
+
+    .profile-img {
+        max-width: 150px;
+    }
+
+    .contact-details {
+        gap: 0.75rem;
+    }
+
+    .contact-item {
+        gap: 0.5rem;
+        font-size: 0.9rem;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        font-size: 16px;
+    }
+
+    .submit-button {
+        width: 100%;
+        padding: 0.8rem;
+    }
+
+    .download-button {
+        width: 100%;
+        padding: 0.8rem;
+    }
+
+    .footer-section h4 {
+        font-size: 1rem;
+    }
+
+    .footer-section a {
+        font-size: 0.9rem;
+    }
+
+    .video-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .resume {
+        padding: 2rem 1rem;
+    }
+}
+
+/* Additional responsive tweaks */
 @media (max-width: 768px) {
     .work-grid {
         grid-template-columns: 1fr;
