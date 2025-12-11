@@ -1,0 +1,170 @@
+[
+    {
+        "id": "snort-ids",
+        "title": "SNORT based Network Intrusion Detection System",
+        "description": "A comprehensive Intrusion Detection System built on Snort, featuring real-time network traffic analysis, custom rule creation, and automated threat response capabilities.",
+        "tags": [
+            "Snort",
+            "IDS",
+            "Network Security",
+            "Python",
+            "Bash"
+        ],
+        "features": [
+            "Real-time packet capture and analysis",
+            "Custom Snort rule development",
+            "Automated threat detection and alerting",
+            "Log analysis and visualization",
+            "Integration with SIEM systems"
+        ],
+        "links": {
+            "project": "./resources/IDS Project/Snort-Based Intrusion Detection System (IDS) Instructions.docx",
+            "demo": "https://youtube.com/@CyberTechX_ravin"
+        }
+    },
+    {
+        "id": "caesar-cipher",
+        "title": "Caesar Cipher Implementation",
+        "description": "A Python program implementing the classic Caesar Cipher technique for message encryption and decryption with customizable shift keys.",
+        "tags": [
+            "Cryptography",
+            "Python",
+            "Encryption"
+        ],
+        "features": [
+            "User input for message and shift value",
+            "Encryption and decryption modes",
+            "Handles both uppercase and lowercase characters"
+        ],
+        "links": {
+            "project": "https://github.com/HackRore/PRODIGY_CS_1",
+            "demo": "https://youtube.com/@CyberTechX_ravin"
+        }
+    },
+    {
+        "id": "image-encryption",
+        "title": "Image Encryption Tool",
+        "description": "A Python-based image encryption tool using pixel-level manipulation techniques for secure image transformation.",
+        "tags": [
+            "Image Processing",
+            "Python",
+            "PIL/OpenCV"
+        ],
+        "features": [
+            "Image upload and display",
+            "Pixel-wise encryption",
+            "Reversible decryption",
+            "PIL/OpenCV integration"
+        ],
+        "links": {
+            "project": "https://github.com/HackRore/PRODIGY_CS_2",
+            "demo": "https://youtube.com/@CyberTechX_ravin"
+        }
+    },
+    {
+        "id": "password-checker",
+        "title": "Password Complexity Checker",
+        "description": "A comprehensive password strength evaluation tool with real-time feedback and improvement suggestions.",
+        "tags": [
+            "Security",
+            "Python",
+            "Regex"
+        ],
+        "features": [
+            "Real-time strength feedback",
+            "Regex-based validation",
+            "Improvement suggestions",
+            "Multiple criteria checking"
+        ],
+        "links": {
+            "project": "https://github.com/HackRore/PRODIGY_CS_3",
+            "demo": "https://youtube.com/@CyberTechX_ravin"
+        }
+    },
+    {
+        "id": "educational-keylogger",
+        "title": "Educational Keylogger",
+        "description": "A Python-based keylogger for educational purposes, demonstrating keylogger functionality in ethical hacking.",
+        "tags": [
+            "Ethical Hacking",
+            "Python",
+            "Security"
+        ],
+        "features": [
+            "Keystroke logging",
+            "Text file output",
+            "Background operation",
+            "Educational focus"
+        ],
+        "links": {
+            "project": "https://github.com/HackRore/PRODIGY_CS_4",
+            "demo": "https://youtube.com/@CyberTechX_ravin"
+        }
+    },
+    {
+        "id": "packet-analyzer",
+        "title": "Network Packet Analyzer",
+        "description": "A network packet sniffer using Scapy to capture and analyze live network traffic for educational purposes.",
+        "tags": [
+            "Network Security",
+            "Python",
+            "Scapy"
+        ],
+        "features": [
+            "Live packet capture",
+            "Protocol filtering",
+            "IP and port analysis",
+            "Packet summary display"
+        ],
+        "links": {
+            "project": "https://github.com/HackRore/PRODIGY_CS_5",
+            "demo": "https://youtube.com/@CyberTechX_ravin"
+        }
+    },
+    {
+        "id": "brain-tumor-detection",
+        "title": "Brain Tumor Detection Web App",
+        "description": "A web application for detecting brain tumors from MRI images using AI, providing instant analysis and results with high accuracy.",
+        "tags": [
+            "AI/ML",
+            "Web Development",
+            "Medical Imaging",
+            "Python",
+            "Flask"
+        ],
+        "features": [
+            "AI-powered tumor detection",
+            "Real-time image analysis",
+            "User-friendly interface",
+            "Detailed result visualization",
+            "Secure data handling"
+        ],
+        "links": {
+            "project": "https://github.com/HackRore/brain-tumor-detection-project_ravin",
+            "demo": "https://youtube.com/@CyberTechX_ravin"
+        }
+    },
+    {
+        "id": "cafe-management",
+        "title": "Django Cafe Management System",
+        "description": "A comprehensive cafe management system with menu management, order processing, inventory tracking, and admin controls.",
+        "tags": [
+            "Web Development",
+            "Django",
+            "SQLite",
+            "Python",
+            "JavaScript"
+        ],
+        "features": [
+            "Menu management system",
+            "Order processing workflow",
+            "Inventory tracking",
+            "Admin dashboard",
+            "Customer management"
+        ],
+        "links": {
+            "project": "https://github.com/HackRore/Django_Cafe_Project",
+            "demo": "https://ravinwebtech.web.app"
+        }
+    }
+]

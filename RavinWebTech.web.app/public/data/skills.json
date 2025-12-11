@@ -1,0 +1,82 @@
+[
+    {
+        "category": "Hardware & IT Support",
+        "items": [
+            {
+                "name": "IT Hardware Installation & Troubleshooting",
+                "icon": "fas fa-desktop"
+            },
+            {
+                "name": "Desktop & Laptop Repair",
+                "icon": "fas fa-laptop"
+            },
+            {
+                "name": "Network Cabling & Configuration",
+                "icon": "fas fa-network-wired"
+            },
+            {
+                "name": "Software Setup & Virus Removal",
+                "icon": "fas fa-shield-virus"
+            }
+        ]
+    },
+    {
+        "category": "Software Development",
+        "items": [
+            {
+                "name": "Android Development (Java/XML)",
+                "icon": "fab fa-android"
+            },
+            {
+                "name": "Web Design & Responsive UI (HTML/CSS)",
+                "icon": "fas fa-code"
+            },
+            {
+                "name": "Debugging & Code Optimization",
+                "icon": "fas fa-bug"
+            },
+            {
+                "name": "Program Logic Understanding",
+                "icon": "fas fa-brain"
+            }
+        ]
+    },
+    {
+        "category": "Cloud & DevOps",
+        "items": [
+            {
+                "name": "AWS Cloud Computing",
+                "icon": "fab fa-aws"
+            },
+            {
+                "name": "IAM, EC2, S3 Management",
+                "icon": "fas fa-server"
+            },
+            {
+                "name": "Git & GitHub Version Control",
+                "icon": "fab fa-github"
+            },
+            {
+                "name": "AI Tools Integration",
+                "icon": "fas fa-robot"
+            }
+        ]
+    },
+    {
+        "category": "Content Creation",
+        "items": [
+            {
+                "name": "YouTube Content Creation",
+                "icon": "fab fa-youtube"
+            },
+            {
+                "name": "Static Web App Creation",
+                "icon": "fas fa-magic"
+            },
+            {
+                "name": "Operating System Deployment",
+                "icon": "fas fa-laptop-code"
+            }
+        ]
+    }
+]

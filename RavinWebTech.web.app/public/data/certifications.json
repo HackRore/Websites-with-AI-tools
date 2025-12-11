@@ -1,0 +1,132 @@
+[
+    {
+        "id": "cyber-ops",
+        "title": "Cyber Operations",
+        "issuer": "Infosys",
+        "category": "security",
+        "image": "img/Certifications/infosysy ravindra cyber operations certificate_page-0001.jpg"
+    },
+    {
+        "id": "prodigy",
+        "title": "Cybersecurity Internship",
+        "issuer": "Prodigy InfoTech",
+        "category": "security",
+        "image": "img/Certifications/Cyber Security National Seminar.png",
+        "pdf": "resources/certificates/Prodigy Infotech Offer Letter.pdf"
+    },
+    {
+        "id": "pregrad",
+        "title": "Cybersecurity Training",
+        "issuer": "Wipro Pregrad",
+        "category": "security",
+        "image": "img/Certifications/Intro Cyber Security.png",
+        "pdf": "resources/certificates/Pregrad Training Letter - Ravindra .pdf"
+    },
+    {
+        "id": "kali-linux",
+        "title": "Kali Linux Fundamentals",
+        "issuer": "Great Learning",
+        "category": "security",
+        "image": "img/Certifications/Kali Linux.png"
+    },
+    {
+        "id": "freedom-ai",
+        "title": "Freedom with AI Masterclass",
+        "issuer": "Freedom with AI",
+        "category": "ai",
+        "image": "img/Certifications/AI and Python.png",
+        "pdf": "resources/certificates/freedom with ai masterclass session certificate.pdf"
+    },
+    {
+        "id": "usdc-hardware",
+        "title": "IT Hardware Technician",
+        "issuer": "USDC Govt. Certified",
+        "category": "other",
+        "image": "img/Certifications/Service Technician IT Hardware certificate.pdf",
+        "pdf": "resources/certificates/USDC gov certified in Hardware Technician.pdf"
+    },
+    {
+        "id": "ai-iot",
+        "title": "AI & IoT Integration",
+        "issuer": "Great Learning",
+        "category": "ai",
+        "image": "img/Certifications/AI_&_IOT.png"
+    },
+    {
+        "id": "android-dev",
+        "title": "Android Application Development",
+        "issuer": "Great Learning",
+        "category": "dev",
+        "image": "img/Certifications/Android_Application_Development.png"
+    },
+    {
+        "id": "basic-java",
+        "title": "Java Programming - Basics",
+        "issuer": "Great Learning",
+        "category": "dev",
+        "image": "img/Certifications/Basic_Java.png"
+    },
+    {
+        "id": "java-dsa-beg",
+        "title": "Java DSA - Beginners",
+        "issuer": "Great Learning",
+        "category": "dev",
+        "image": "img/Certifications/Java_DSA_Beginers.png"
+    },
+    {
+        "id": "java-dsa-int",
+        "title": "Java DSA - Intermediate",
+        "issuer": "Great Learning",
+        "category": "dev",
+        "image": "img/Certifications/Java_DSA_Intermediate.png"
+    },
+    {
+        "id": "chatgpt",
+        "title": "ChatGPT for Coders",
+        "issuer": "Great Learning",
+        "category": "ai",
+        "image": "img/Certifications/ChatGPT for Coders.png"
+    },
+    {
+        "id": "flutter",
+        "title": "Flutter Development",
+        "issuer": "Great Learning",
+        "category": "dev",
+        "image": "img/Certifications/Flutter for Beginners.png"
+    },
+    {
+        "id": "iot",
+        "title": "Internet of Things",
+        "issuer": "Great Learning",
+        "category": "ai",
+        "image": "img/Certifications/IOT.png"
+    },
+    {
+        "id": "digital-marketing",
+        "title": "Digital Marketing Basics",
+        "issuer": "Great Learning",
+        "category": "other",
+        "image": "img/Certifications/Intro_Digital_Marketing.png"
+    },
+    {
+        "id": "git-copilot",
+        "title": "GitHub Copilot",
+        "issuer": "Great Learning",
+        "category": "ai",
+        "image": "img/Certifications/Intro_Git_Copilot.png"
+    },
+    {
+        "id": "linux-tut",
+        "title": "Linux Tutorial",
+        "issuer": "Great Learning",
+        "category": "security",
+        "image": "img/Certifications/Linux_Tutorial.png"
+    },
+    {
+        "id": "python-ds",
+        "title": "Python for Data Science",
+        "issuer": "Great Learning",
+        "category": "ai",
+        "image": "img/Certifications/python_for_Data_Science.png"
+    }
+]

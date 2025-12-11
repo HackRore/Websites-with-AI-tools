@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Certificates and Credentials of Ravindra Pandit Ahire.">
+    <meta name="theme-color" content="#0a0a0f">
+
+    <link rel="icon" type="image/png" href="img/profiles/profile_1.jpg">
+    <title>Certificates | Ravindra Pandit Ahire</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Main Navigation -->
+    <nav class="navbar" aria-label="Main Navigation">
+        <a href="index.html" class="nav-brand">
+            <div class="logo-container">
+                <img src="img/profiles/profile_1.jpg" alt="R" class="nav-logo">
+                <div class="logo-text">
+                    <span class="logo-name">Ravindra</span>
+                    <span class="logo-title">Security Analyst</span>
+                </div>
+            </div>
+        </a>
+
+        <ul class="nav-links">
+            <li><a href="index.html#home" class="nav-link"><i class="fas fa-home"></i><span>Home</span></a></li>
+            <li><a href="index.html#about" class="nav-link"><i class="fas fa-user-shield"></i><span>About</span></a>
+            </li>
+            <li><a href="index.html#experience" class="nav-link"><i
+                        class="fas fa-briefcase"></i><span>Experience</span></a></li>
+            <li><a href="index.html#work" class="nav-link"><i class="fas fa-terminal"></i><span>Projects</span></a></li>
+            <li><a href="certificates.html" class="nav-link active"><i
+                        class="fas fa-certificate"></i><span>Certificates</span></a></li>
+        </ul>
+
+        <div class="nav-controls">
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+                <i class="fas fa-sun"></i>
+            </button>
+            <div class="hamburger" aria-label="Menu" role="button" tabindex="0">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <section class="hero" style="min-height: 40vh; padding: 6rem 1rem 0;">
+        <div class="hero-content">
+            <h1 class="section-title">Credentials & <span style="color: var(--cyan);">Certificates</span></h1>
+            <p class="lead" style="max-width: 600px; margin: 0 auto; color: var(--muted);">
+                A collection of my verified certifications in Cyber Security, AI, and Software Development.
+            </p>
+        </div>
+    </section>
+
+    <!-- Certificate Grid -->
+    <section class="container" style="padding-bottom: 5rem;">
+        <div class="cert-filters">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="security">Security</button>
+            <button class="filter-btn" data-filter="ai">AI & Data</button>
+            <button class="filter-btn" data-filter="dev">Development</button>
+        </div>
+
+        <div id="certificate-grid" class="cert-grid">
+            <!-- Injected by JS -->
+            <div class="loading-spinner" style="margin: 2rem auto;"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-col">
+                <h3>Ravindra Ahire</h3>
+                <p>Securing the digital frontier, one packet at a time.</p>
+                <p style="margin-top: 1rem;"><a href="mailto:HackRore@gmail.com"
+                        style="color: var(--cyan);">HackRore@gmail.com</a></p>
+            </div>
+            <div class="footer-col">
+                <div class="social-links">
+                    <a href="https://github.com/HackRore" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://linkedin.com/in/ravindra-ahire-256b61326" aria-label="LinkedIn"><i
+                            class="fab fa-linkedin-in"></i></a>
+                    <a href="https://youtube.com/@CyberTechX_ravin" aria-label="YouTube"><i
+                            class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Ravindra Pandit Ahire.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script type="module" src="script.js"></script>
+
+    <!-- Firebase -->
+    <!-- Firebase (Global init in script.js is sufficient, or keep if analytic specific but handle error better) -->
+    <!-- Removed detailed init to rely on modules or prevent empty error handling -->
+</body>
+
+</html>
