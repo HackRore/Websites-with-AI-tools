@@ -21,7 +21,8 @@ export function initParticles(canvas) {
             this.vx = (Math.random() - 0.5) * 0.5;
             this.vy = (Math.random() - 0.5) * 0.5;
             this.size = Math.random() * 2 + 1;
-            this.baseColor = 'rgba(0, 243, 255, 0.5)'; // Cyan
+            this.baseColor = 'rgba(6, 182, 212, 0.5)'; // Cyan/Teal
+            this.glowColor = 'rgba(8, 145, 178, 0.5)'; // Darker Cyan
         }
 
         update() {

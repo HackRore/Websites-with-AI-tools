@@ -9,34 +9,38 @@
     --ios-red: #FF3B30;
     --ios-orange: #FF9500;
     --ios-yellow: #FFCC00;
-    
-    /* Light Mode Colors */
-    --text-primary: #000000;
-    --text-secondary: #666666;
-    --text-tertiary: #999999;
-    --bg-primary: #FFFFFF;
-    --bg-secondary: #F5F5F7;
-    --bg-tertiary: #E8E8ED;
-    --border-color: #D8D8DC;
-    
-    /* Dark Mode Colors */
-    --dark-text-primary: #FFFFFF;
-    --dark-text-secondary: #A5A5A7;
-    --dark-text-tertiary: #555555;
-    --dark-bg-primary: #000000;
-    --dark-bg-secondary: #1C1C1E;
-    --dark-bg-tertiary: #2C2C2E;
-    --dark-border-color: #404042;
-    
-    /* Modern Color Scheme (Updated) */
-    --bg-deep: #050507;
-    --bg-card: rgba(255, 255, 255, 0.03);
-    --border-glass: rgba(255, 255, 255, 0.08);
-    --primary-glow: #00f3ff;
-    --secondary-glow: #bc13fe;
-    --text-main: #ffffff;
-    --text-muted: #8b9bb4;
-    
+
+    /* Enforcing Modern Corporate Navy Theme */
+    --bg-primary: #0F172A;
+    --bg-secondary: #1E293B;
+    --text-primary: #F8FAFC;
+    --text-secondary: #94A3B8;
+    --border-color: rgba(148, 163, 184, 0.1);
+
+    /* Legacy iOS maps (remapped for Navy theme) */
+    --ios-blue: #06B6D4;
+    /* Cyan */
+    --ios-purple: #818CF8;
+    /* Indigo */
+    --ios-green: #10B981;
+    --ios-pink: #F43F5E;
+
+    /* Dark Mode Colors (Already Dark by default) */
+    --dark-text-primary: #F8FAFC;
+    --dark-text-secondary: #94A3B8;
+    --dark-bg-primary: #0F172A;
+    --dark-bg-secondary: #1E293B;
+    --dark-border-color: rgba(148, 163, 184, 0.1);
+
+    /* Modern Color Scheme (Updated for Navy) */
+    --bg-deep: #020617;
+    --bg-card: #1E293B;
+    --border-glass: rgba(148, 163, 184, 0.1);
+    --primary-glow: #06B6D4;
+    --secondary-glow: #818CF8;
+    --text-main: #F8FAFC;
+    --text-muted: #94A3B8;
+
     /* Typography */
     --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
     --font-xl: 2.25rem;
@@ -49,19 +53,19 @@
     --font-weight-medium: 500;
     --font-weight-semibold: 600;
     --font-weight-bold: 700;
-    
+
     /* Shadows (iOS style - subtle) */
     --shadow-xs: 0 2px 8px rgba(0, 0, 0, 0.08);
     --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.12);
     --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.16);
     --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.2);
-    
+
     /* Dark Mode Shadows */
     --dark-shadow-xs: 0 2px 8px rgba(0, 0, 0, 0.3);
     --dark-shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.4);
     --dark-shadow-md: 0 8px 24px rgba(0, 0, 0, 0.5);
     --dark-shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.6);
-    
+
     /* Spacing Scale */
     --spacing-xs: 0.25rem;
     --spacing-sm: 0.5rem;
@@ -70,7 +74,7 @@
     --spacing-xl: 2rem;
     --spacing-2xl: 3rem;
     --spacing-3xl: 4rem;
-    
+
     /* Border Radius (iOS style) */
     --radius-xs: 4px;
     --radius-sm: 8px;
@@ -79,7 +83,7 @@
     --radius-xl: 20px;
     --radius-2xl: 28px;
     --radius-full: 9999px;
-    
+
     /* Transitions */
     --transition-fast: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-base: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -116,13 +120,15 @@ body {
     }
 }
 
-/* Navigation */
+/* Navigation - Commented out to use styles.css default */
+/*
 .navbar {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     width: 100%;
+    
     background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
@@ -134,88 +140,8 @@ body {
     z-index: 1000;
     transition: var(--transition-base);
 }
-
-/* Dark Mode Navbar */
-@media (prefers-color-scheme: dark) {
-    .navbar {
-        background: rgba(0, 0, 0, 0.85);
-        border-bottom-color: var(--dark-border-color);
-    }
-}
-
-.navbar.scrolled {
-    padding: var(--spacing-md) 5%;
-}
-
-.nav-brand {
-    font-size: var(--font-lg);
-    font-weight: var(--font-weight-semibold);
-    color: var(--ios-blue);
-    text-decoration: none;
-    transition: var(--transition-fast);
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-md);
-    white-space: nowrap;
-}
-
-.nav-brand:active {
-    opacity: 0.7;
-}
-
-.nav-brand i {
-    font-size: 1.2rem;
-}
-
-.nav-links {
-    display: flex;
-    list-style: none;
-    gap: 1rem;
-    margin: 0;
-    padding: 0;
-    align-items: center;
-}
-
-.nav-link {
-    text-decoration: none;
-    color: var(--text-secondary);
-    font-weight: var(--font-weight-medium);
-    font-size: var(--font-sm);
-    padding: var(--spacing-sm) var(--spacing-md);
-    border-radius: var(--radius-lg);
-    transition: var(--transition-fast);
-    position: relative;
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-xs);
-    white-space: nowrap;
-}
-
-@media (prefers-color-scheme: dark) {
-    .nav-link {
-        color: var(--dark-text-secondary);
-    }
-}
-
-.nav-link:hover {
-    color: var(--ios-blue);
-}
-
-.nav-link.active {
-    color: var(--ios-blue);
-    background: rgba(0, 122, 255, 0.1);
-    font-weight: var(--font-weight-semibold);
-}
-
-@media (prefers-color-scheme: dark) {
-    .nav-link.active {
-        background: rgba(0, 122, 255, 0.2);
-    }
-}
-
-.nav-link i {
-    font-size: 1rem;
-}
+*/
+/* ... removing other nav defaults to inherit from styles.css ... */
 
 /* Hamburger Menu */
 .hamburger {
@@ -312,8 +238,15 @@ body {
 }
 
 @keyframes floatUp {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-12px); }
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
 }
 
 .cert-header h1 {
@@ -706,6 +639,7 @@ body {
         opacity: 0;
         transform: translateY(50px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -851,7 +785,8 @@ body {
     margin-top: var(--spacing-lg);
 }
 
-.download-btn, .share-btn {
+.download-btn,
+.share-btn {
     flex: 1;
     padding: var(--spacing-md) var(--spacing-lg);
     border: none;
@@ -909,6 +844,8 @@ body {
 }
 
 /* Footer */
+/* Footer - Commented out to use styles.css default */
+/*
 .footer {
     background: var(--bg-secondary);
     color: var(--text-primary);
@@ -916,6 +853,7 @@ body {
     margin-top: var(--spacing-3xl);
     border-top: 1px solid var(--border-color);
 }
+*/
 
 @media (prefers-color-scheme: dark) {
     .footer {
@@ -960,6 +898,7 @@ body {
 }
 
 @media (prefers-color-scheme: dark) {
+
     .footer-section ul li a,
     .footer-section a {
         color: var(--dark-text-secondary);
@@ -1013,6 +952,7 @@ body {
         opacity: 0;
         transform: translateY(30px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -1024,6 +964,7 @@ body {
         opacity: 0;
         transform: translateY(-20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -1034,12 +975,29 @@ body {
     animation: fadeUp 0.6s ease-out forwards;
 }
 
-.cert-card:nth-child(1) { animation-delay: 0.1s; }
-.cert-card:nth-child(2) { animation-delay: 0.2s; }
-.cert-card:nth-child(3) { animation-delay: 0.3s; }
-.cert-card:nth-child(4) { animation-delay: 0.4s; }
-.cert-card:nth-child(5) { animation-delay: 0.5s; }
-.cert-card:nth-child(6) { animation-delay: 0.6s; }
+.cert-card:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.cert-card:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.cert-card:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.cert-card:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.cert-card:nth-child(5) {
+    animation-delay: 0.5s;
+}
+
+.cert-card:nth-child(6) {
+    animation-delay: 0.6s;
+}
 
 /* Responsive Design - Tablet */
 @media (max-width: 768px) {
@@ -1051,9 +1009,11 @@ body {
         display: flex;
     }
 
+    /*
     .navbar {
         padding: var(--spacing-md) 5%;
     }
+    */
 
     .cert-header {
         padding: 7rem 1rem 3rem;
@@ -1113,7 +1073,8 @@ body {
         flex-direction: column;
     }
 
-    .download-btn, .share-btn {
+    .download-btn,
+    .share-btn {
         padding: var(--spacing-md) var(--spacing-lg);
         font-size: var(--font-sm);
     }
@@ -1126,9 +1087,11 @@ body {
 
 /* Responsive Design - Mobile */
 @media (max-width: 480px) {
+    /*
     .navbar {
         padding: var(--spacing-md) 3%;
     }
+    */
 
     .nav-brand {
         font-size: var(--font-md);
@@ -1266,7 +1229,8 @@ body {
         gap: var(--spacing-md);
     }
 
-    .download-btn, .share-btn {
+    .download-btn,
+    .share-btn {
         padding: var(--spacing-md);
         font-size: var(--font-sm);
     }
@@ -1307,4 +1271,4 @@ body {
     .footer-bottom p {
         margin: 0.25rem 0;
     }
-} 
+}
